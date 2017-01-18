@@ -14,7 +14,6 @@ Lastly, create a new Markdown post and include the following:&lt;/p&gt;
 
 &lt;p&gt;where &lt;code&gt;factorial-sample.ipynb&lt;/code&gt; is the notebook's filename.
 Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed metadata like &lt;code&gt;Title&lt;/code&gt;, &lt;code&gt;Date&lt;/code&gt; etc.&lt;/p&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(\cos(x) = y^2\)&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id="example"&gt;Example&lt;/h2&gt;
 &lt;p&gt;The next line till the end of the post is coming from a notebook:&lt;/p&gt;
 &lt;p&gt;
@@ -82,64 +81,7 @@ Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed me
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
+&lt;/div&gt;&lt;/p&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#download-spark"&gt;Download Spark&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#set-and-test"&gt;Set and test&lt;/a&gt;&lt;ul&gt;
