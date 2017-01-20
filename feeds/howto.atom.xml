@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-01-18T00:00:00+01:00</updated><entry><title>Experiment with Jupyter</title><link href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/" rel="alternate"></link><published>2017-01-18T00:00:00+01:00</published><updated>2017-01-18T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-18:/posts/2017/Jan/18/experiment-with-jupyter/</id><summary type="html">&lt;p&gt;Outline how to utilize Jupyter notebooks.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using the &lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags"&gt;liquid_tags&lt;/a&gt; plugin, it seems to be very simple to include Jupyter notebooks. You have to add the plugin in &lt;code&gt;pelicanconf.py&lt;/code&gt;; e.g.:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-01-20T00:00:00+01:00</updated><entry><title>My getting started with Atom</title><link href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/" rel="alternate"></link><published>2017-01-20T00:00:00+01:00</published><updated>2017-01-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-20:/posts/2017/Jan/20/my-getting-started-with-atom/</id><summary type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I recently discovered Atom.
+In the past, I've been using Emacs but not so long ago I realized that it is time to move on.
+Sublime Text 3 was the next editor, but only for a short while.
+Getting to know Atom and the fact it is free made …&lt;/p&gt;</summary><content type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I recently discovered Atom.
+In the past, I've been using Emacs but not so long ago I realized that it is time to move on.
+Sublime Text 3 was the next editor, but only for a short while.
+Getting to know Atom and the fact it is free made me move.
+In this post, I'd like to share with you some of my initial learnings and settings that I came up with.&lt;/p&gt;
+&lt;h1 id="general"&gt;General&lt;/h1&gt;
+&lt;h2 id="settings"&gt;Settings&lt;/h2&gt;
+&lt;p&gt;On Mac, hitting &lt;code&gt;CMD ,&lt;/code&gt; brings up the settings page.
+To be honest the default settings, for the most part, are perfect.
+I only added to the &lt;code&gt;Non Word Character&lt;/code&gt; the underscore &lt;code&gt;_&lt;/code&gt;; this allows moving forward and backwards more easily over whole words.&lt;/p&gt;
+&lt;h2 id="packages"&gt;Packages&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Some of the packages I mention below are pre-installed and some you'd have to install by yourself.&lt;/p&gt;
+&lt;h3 id="advanced-open-file"&gt;&lt;a href="https://atom.io/packages/advanced-open-file"&gt;advanced-open-file&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This allows easy file opening.
+By enabling the following two, this package will remind you the beloved &lt;code&gt;ido&lt;/code&gt; Emacs mode:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Enable &lt;code&gt;Fuzzy Matching&lt;/code&gt;: smarter searching&lt;/li&gt;
+&lt;li&gt;Enable &lt;code&gt;Shortcuts for fast directory switching&lt;/code&gt;: This will make &lt;code&gt;~/&lt;/code&gt; jump directly to your home directory&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="highlight-selected"&gt;&lt;a href="https://atom.io/packages/highlight-selected"&gt;highlight selected&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This allows the highlighting of all the instances of a selected word in the current file.
+Very handy.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Example" src="http://drorata.github.io/images/atom-getting-started-highlight-selected.gif"&gt;&lt;/p&gt;
+&lt;h3 id="pretty-json"&gt;&lt;a href="https://atom.io/packages/pretty-json"&gt;pretty json&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This will simply allow prettifying JSONs.&lt;/p&gt;
+&lt;h3 id="platformio-ide-terminal"&gt;&lt;a href="https://atom.io/packages/platformio-ide-terminal"&gt;platformio ide terminal&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Adds a terminal to Atom.
+I am still not fluent in terms of the key bindings, but this should be helpful.
+By the way, as I'm using &lt;a href="https://github.com/banga/powerline-shell"&gt;Powerline-shell&lt;/a&gt; for my terminal, I had to configure the font of this package.
+This can be easily achieved in the package's settings.&lt;/p&gt;
+&lt;p&gt;For easier switching between the terminal and the open file(s), I added the following to &lt;code&gt;~/.atom/init.coffee&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;packages&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onDidActivatePackage&lt;/span&gt; &lt;span class="nf"&gt;(pack) -&amp;gt;&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;platformio-ide-terminal&amp;#39;&lt;/span&gt;
+    &lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;atom-workspace&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s"&gt;&amp;#39;editor:focus-main&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt;
+        &lt;span class="nv"&gt;p = &lt;/span&gt;&lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;workspace&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getActivePane&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="nv"&gt;panels = &lt;/span&gt;&lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;workspace&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getBottomPanels&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="nv"&gt;term = &lt;/span&gt;&lt;span class="nx"&gt;panels&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;find&lt;/span&gt; &lt;span class="nf"&gt;(pan) -&amp;gt;&lt;/span&gt;
+          &lt;span class="nx"&gt;pan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;PlatformIOTerminalView&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;pan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;visible&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;not&lt;/span&gt; &lt;span class="nx"&gt;term&lt;/span&gt;
+          &lt;span class="c1"&gt;# Open a new terminal&lt;/span&gt;
+          &lt;span class="nv"&gt;editor = &lt;/span&gt;&lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;workspace&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getActiveTextEditor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+          &lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;atom&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;views&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;editor&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;platformio-ide-terminal:new&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;term&lt;/span&gt; &lt;span class="o"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;focused&lt;/span&gt; &lt;span class="o"&gt;isnt&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+          &lt;span class="nx"&gt;term&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;focus&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;term&lt;/span&gt; &lt;span class="o"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;focused&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+          &lt;span class="nx"&gt;term&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;blur&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# Stops the terminal from blinking&lt;/span&gt;
+          &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;activate&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Unfortunately, I don't remember where I found this.&lt;/p&gt;
+&lt;h3 id="whitespace"&gt;&lt;a href="https://atom.io/packages/whitespace"&gt;whitespace&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This will remove trailing whitespace upon saving.
+Remember that this is very helpful when it comes to putting your code/text under versioning control.&lt;/p&gt;
+&lt;h2 id="additional-languages"&gt;Additional languages&lt;/h2&gt;
+&lt;p&gt;If you're writing in a language which is not natively supported by Atom, you can most likely add it.
+In my case, I add &lt;a href="https://atom.io/packages/language-ini"&gt;language-ini&lt;/a&gt; to support the editing of INI files.&lt;/p&gt;
+&lt;h2 id="spell-checking"&gt;Spell checking&lt;/h2&gt;
+&lt;p&gt;There's a pre-installed package to handle this.
+Probably, at some point I'll look deeper into it.
+Ultimately, I'd like to have it enabled inside the comments of any code but not in its body.
+That's on the todo list.&lt;/p&gt;
+&lt;h1 id="python-related"&gt;Python related&lt;/h1&gt;
+&lt;p&gt;I work a lot with Python, to that end, there are several hacks I found to be useful.&lt;/p&gt;
+&lt;h2 id="hydrogen"&gt;&lt;a href="https://atom.io/packages/Hydrogen"&gt;Hydrogen&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This allows the evaluation of Python lines &lt;em&gt;within&lt;/em&gt; the editor!
+It spawns a Jupyter kernel and uses it.&lt;/p&gt;
+&lt;h2 id="autocomplete-python"&gt;&lt;a href="https://atom.io/packages/autocomplete-python"&gt;autocomplete python&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;More advanced autocompletion; it looks up the doc-strings, identifies variables and functions etc.
+To enable this one, I had to
+1. Re-install the &lt;code&gt;six&lt;/code&gt; module. Simply had to run &lt;code&gt;conda install -f six&lt;/code&gt;
+2. Point to the location of my Anaconda installation.&lt;/p&gt;
+&lt;p&gt;On the todo list is to make sure that this package is aware of Python environments.&lt;/p&gt;
+&lt;h1 id="next-steps"&gt;Next steps&lt;/h1&gt;
+&lt;p&gt;There are so many more things to learn and define with Atom.
+Here are some ideas:
+- Learn how to use git from within Atom. This must be fun as, after all, Atom was developed by GitHub
+- Improve the integration of Atom, Markdown and Pelican to enable easier blogging&lt;/p&gt;</content><category term="atom"></category><category term="python"></category><category term="editor"></category><category term="superuser"></category></entry><entry><title>Experiment with Jupyter</title><link href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/" rel="alternate"></link><published>2017-01-18T00:00:00+01:00</published><updated>2017-01-18T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-18:/posts/2017/Jan/18/experiment-with-jupyter/</id><summary type="html">&lt;p&gt;Outline how to utilize Jupyter notebooks.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using the &lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags"&gt;liquid_tags&lt;/a&gt; plugin, it seems to be very simple to include Jupyter notebooks. You have to add the plugin in &lt;code&gt;pelicanconf.py&lt;/code&gt;; e.g.:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PLUGIN_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plugins&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;render_math&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;liquid_tags.notebook&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
