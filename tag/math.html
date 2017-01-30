@@ -11785,12 +11785,11 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Parasitic numbers - did you know? | Dr. Dror
+  <title>#math Articles | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/drafts/parasitic-numbers-did-you-know.html">
+  <link rel="canonical" href="http://drorata.github.io/tag/math.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
-  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/general.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11799,7 +11798,6 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
-<meta name="description" content="Just learned about a new kind of numbers">
 </head>
 
 <body>
@@ -11829,132 +11827,32 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Parasitic numbers - did you know?
+      <h1>#math Articles
 </h1>
       <hr>
-<article class="article">
-  <header>
-    <ul class="list-inline">
-      <li class="list-inline-item text-muted" title="2017-01-27T00:00:00+01:00">
+<article class="row teaser">
+  <header class="col-sm-4 text-muted">
+    <ul>
+      <li title="2017-01-30T00:00:00+01:00">
         <i class="fa fa-clock-o"></i>
-        Fri 27 January 2017
+        Mon 30 January 2017
       </li>
-      <li class="list-inline-item">
+      <li>
         <i class="fa fa-folder-open-o"></i>
         <a href="http://drorata.github.io/category/general.html">General</a>
       </li>
-      <li class="list-inline-item">
+      <li>
         <i class="fa fa-user-o"></i>
         <a href="http://drorata.github.io/author/dror-atariah.html">Dror Atariah</a>      </li>
-      <li class="list-inline-item">
-        <i class="fa fa-files-o"></i>
-        <a href="http://drorata.github.io/tag/math.html">#math</a>      </li>
     </ul>
   </header>
-  <div class="content">
-    <p>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Minimal-parasitic-number">Minimal parasitic number<a class="anchor-link" href="#Minimal-parasitic-number">&#182;</a></h1><p>One of the things I like so much about math is that you always get to know a new concept.
-Recently, I learned about <a href="https://en.wikipedia.org/wiki/Parasitic_number">parasitic numbers</a>.
-I was asked what is the minimal parasitic 4-number.
-So, I wrote down the following simple code, and found out:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">new_num</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">n_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">n_str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">n_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_num</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-    <span class="n">new_n</span> <span class="o">=</span> <span class="n">new_num</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">new_n</span> <span class="o">==</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">is_num</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0
-102564
-128205
-153846
-179487
-205128
-230769
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></p>
+  <div class="col-sm-8">
+    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/">Parasitic numbers - did you know?</a></h4>
+    <div class="content">
+      Just learned about a new kind of numbers
+    </div>
   </div>
 </article>
-<hr>
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() {
-    this.page.url = 'http://drorata.github.io/drafts/parasitic-numbers-did-you-know.html';
-    this.page.identifier = 'parasitic-numbers-did-you-know';
-  };
-  (function() {
-    var d = document;
-    var s = d.createElement('script');
-    s.src = '//dr-dror.disqus.com.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript class="text-muted">
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-</noscript>
     </div>
   </div>
 
