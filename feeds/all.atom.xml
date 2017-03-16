@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-03-10T13:30:00+01:00</updated><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2017/Mar/10/setting-new-computer/" rel="alternate"></link><published>2017-03-10T13:30:00+01:00</published><updated>2017-03-10T13:30:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-10:/posts/2017/Mar/10/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-03-16T13:30:00+01:00</updated><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/" rel="alternate"></link><published>2017-03-16T13:30:00+01:00</published><updated>2017-03-16T13:30:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Docker&lt;/code&gt; Time to start using it, right?&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;DropboxInstaller&lt;/code&gt;&lt;/li&gt;
@@ -38,7 +38,63 @@ To that end I used the &lt;a href="https://github.com/tekezo/Karabiner-Elements"
 &lt;h2 id="vim-syntax-highlighting"&gt;&lt;code&gt;vim&lt;/code&gt; syntax highlighting&lt;/h2&gt;
 &lt;p&gt;I'm using &lt;code&gt;vim&lt;/code&gt; as the editor in the console (mostly when it comes to commit messages for git).
 Still, coloring the editor is nice.
-I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Minimal example with linear regression</title><link href="http://drorata.github.io/posts/2017/Mar/07/minimal-example-with-linear-regression/" rel="alternate"></link><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-07:/posts/2017/Mar/07/minimal-example-with-linear-regression/</id><summary type="html">&lt;p&gt;Basic and synthetic example how to train a linear regression model.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Pillars of reproducible data science work</title><link href="http://drorata.github.io/posts/2017/Mar/15/pillars-of-reproducible-data-science-work/" rel="alternate"></link><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-15:/posts/2017/Mar/15/pillars-of-reproducible-data-science-work/</id><summary type="html">&lt;p&gt;What does it take to have reproducible data science work? Present a minimal example using Docker.&lt;/p&gt;</summary><content type="html">&lt;h1 id="bare-minimum-of-reproducible-work"&gt;Bare minimum of reproducible work&lt;/h1&gt;
+&lt;p&gt;The output of software development is naturally a software.
+However, when a software developer presents his or her work the compiled binaries are not the whole story.
+It is important to present also the source code, which has to be readable, meet the coding conventions of the team, testable, etc. etc.
+As software engineering dates back to the 60s of the previous century&lt;sup id="fnref-7d3740b4"&gt;&lt;a class="footnote-ref" href="#fn-7d3740b4"&gt;1&lt;/a&gt;&lt;/sup&gt; the industry has well established methods, paradigms and processes that enable successful software development.
+Reproducible work in the context of software development means that the binaries can be recompiled by someone who is not the original developer.&lt;/p&gt;
+&lt;p&gt;However, in the context of output of data science work, reproducibility depends on slightly different set of elements:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;Result:&lt;/em&gt; It goes without saying that you need to have results if you want to present your work.
+One should be able to compare the reproduced result to the original one.
+In the case of data science result may be an analysis, report, dashboard, trained and tested model, etc.
+Having software development in mind, this part is equivalent to the compiled binaries provided by a developer.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Source code:&lt;/em&gt;  By merely presenting the result of the work, the deliverable is not complete.
+Just like in software development, the binaries on their own are not enough to account as a complete work.
+It is important to show the way; how the results were achieved.
+In other words, sharing the the source code together with the results is crucial.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Data:&lt;/em&gt; Source code alone is not enough.
+For data science related work, the source code is not enough as it has to crunch some numbers.
+The numbers are available in the data set which was considered when the scientist worked on the task.
+Without the data the sources cannot be evaluated and the result cannot be reproduced.
+Let me stress it, for real reproduction the very same data set(s) has to be provided alongside the code.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Environment:&lt;/em&gt; Even if you have the sources and the data that the scientist used for generating the results, you might still be lightyears away from being able to reproduce them.
+For example, results were generated using the development branch version of Pandas and you only have the stable version installed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In other words, if you want to enable someone to reproduce your work, you have to provide a complete package consisting of all the above items.
+The result (or results) must be there, otherwise there's no way of introducing a deliverable.
+Next, it might be argued that the simplest item is the source code.
+To that end one can harness the rich experience from the world of software development.
+But what about the rest?
+How do you put everything into one "software" which can be provided for things like&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;peer reviewing&lt;/li&gt;
+&lt;li&gt;knowledge sharing&lt;/li&gt;
+&lt;li&gt;result reproduction&lt;/li&gt;
+&lt;li&gt;versioning control&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you &lt;a href="http://lmgtfy.com/?q=reproducible+research+data+science"&gt;google related keywords&lt;/a&gt; you will find lots of stuff.
+I recently read about &lt;a href="http://pachyderm.io/"&gt;Pachyderm&lt;/a&gt;; I didn't have the chance to check it.
+You can look in the direction of &lt;a href="https://github.com/airbnb/knowledge-repo"&gt;knowledge-repo&lt;/a&gt;, and probably endless amount of other possibilities.
+I decided to start and play with &lt;a href="http://docker.io/"&gt;Docker&lt;/a&gt; when trying to tackle this issue.
+True, you might see people  write that this is a &lt;a href="https://blog.wearewizards.io/why-docker-is-not-the-answer-to-reproducible-research-and-why-nix-may-be"&gt;bad solution&lt;/a&gt;, but there are always pros and cons.
+You can read more about my first attempt &lt;a href="https://github.com/drorata/mwe-jupyter-docker"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One warning light I see with this approach is the size of the resulting Docker image.
+&lt;a href="https://github.com/drorata/mwe-jupyter-docker/blob/230b683ff0d9c2aed4b632185de5af6015bf92c3/Dockerfile"&gt;At first&lt;/a&gt;, I used &lt;code&gt;jupyter/minimal-notebook&lt;/code&gt; as the base of the image.
+This resulted in a 3.4GB image.
+As per the &lt;a href="https://github.com/jupyter/docker-stacks/issues/205"&gt;related discussion&lt;/a&gt;, I switched to &lt;code&gt;jupyter/base-notebook&lt;/code&gt; and this was a significant improvement.
+Still, the size of the resulting image might be a hurdle when it comes to easily share and distribute the results of data science work.
+&lt;a href="https://blog.replicated.com/engineering/refactoring-a-dockerfile-for-image-size/"&gt;This post&lt;/a&gt; seems like a good place to look for further size optimization tips.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-7d3740b4"&gt;
+&lt;p&gt;Paul Niquette (1995). &lt;a href="http://www.niquette.com/books/softword/tocsoft.html"&gt;"Softword: Provenance for the Word 'Software'"&lt;/a&gt;. adapted from Sophisticated: The Magazine ISBN 1-58922-233-4&amp;#160;&lt;a class="footnote-backref" href="#fnref-7d3740b4" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="docker"></category><category term="jupyter"></category><category term="reproducible"></category><category term="research"></category></entry><entry><title>Minimal example with linear regression</title><link href="http://drorata.github.io/posts/2017/Mar/07/minimal-example-with-linear-regression/" rel="alternate"></link><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-07:/posts/2017/Mar/07/minimal-example-with-linear-regression/</id><summary type="html">&lt;p&gt;Basic and synthetic example how to train a linear regression model.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
