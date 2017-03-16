@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - General</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/general.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-01-30T00:00:00+01:00</updated><entry><title>Parasitic numbers - did you know?</title><link href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/" rel="alternate"></link><published>2017-01-30T00:00:00+01:00</published><updated>2017-01-30T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-30:/posts/2017/Jan/30/parasitic-numbers-did-you-know/</id><summary type="html">&lt;p&gt;Just learned about a new kind of numbers&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - General</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/general.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-03-16T00:00:00+01:00</updated><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/" rel="alternate"></link><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Docker&lt;/code&gt; Time to start using it, right?&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DropboxInstaller&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Franz&lt;/code&gt; a universal messenger&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Spotify&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LibreOffice&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MacPorts&lt;/code&gt; For this one you'd need to install XCode related stuff&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Skim&lt;/code&gt; Much better than the built in Preview&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Skype&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Slack&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Spectacle&lt;/code&gt; Super useful for windows management using the keyboard&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;atom&lt;/code&gt; Well, this is my editor of choice for the past 4 months. I'm not going to change it.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Chrome&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;iTerm2&lt;/code&gt;. However, I'm going to try out &lt;code&gt;Hyper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Google drive&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mactex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nteract&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vlc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Anaconda python distribution&lt;/li&gt;
+&lt;li&gt;In addition I installed &lt;a href="https://github.com/prat0318/json_resume"&gt;&lt;code&gt;json_resume&lt;/code&gt;&lt;/a&gt; which I use to build my CV.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="some-more-remarks"&gt;Some more remarks&lt;/h1&gt;
+&lt;h2 id="setting-of-atom"&gt;Setting of Atom&lt;/h2&gt;
+&lt;p&gt;For this I discovered the wonderful plugin &lt;a href="https://atom.io/packages/sync-settings"&gt;sync-settings&lt;/a&gt;.
+This allowed easy copying of the settings and packages from my other box.&lt;/p&gt;
+&lt;h2 id="improved-commandline"&gt;Improved commandline&lt;/h2&gt;
+&lt;p&gt;To that end I use &lt;a href="https://github.com/banga/powerline-shell"&gt;powerline-shell&lt;/a&gt; which I strongly recommend.&lt;/p&gt;
+&lt;h2 id="enabling-pelican"&gt;Enabling Pelican&lt;/h2&gt;
+&lt;p&gt;Pelican is easy to install using &lt;code&gt;pip&lt;/code&gt;.
+However, in addition I had to install the &lt;code&gt;Markdown&lt;/code&gt; module.&lt;/p&gt;
+&lt;h2 id="mapping-to"&gt;Mapping &lt;code&gt;§&lt;/code&gt; to &lt;code&gt;`&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;I got an international English keyboard.
+This means that the upper left key (right under the &lt;code&gt;ESC&lt;/code&gt;) is mapped to &lt;code&gt;§&lt;/code&gt; and &lt;code&gt;±&lt;/code&gt;.
+I lived so long without using these symbols on a regular basis, and thus I decided to map this key to the regular backtick and tilde (&lt;code&gt;~&lt;/code&gt;).
+To that end I used the &lt;a href="https://github.com/tekezo/Karabiner-Elements"&gt;Karabiner-Elements&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="vim-syntax-highlighting"&gt;&lt;code&gt;vim&lt;/code&gt; syntax highlighting&lt;/h2&gt;
+&lt;p&gt;I'm using &lt;code&gt;vim&lt;/code&gt; as the editor in the console (mostly when it comes to commit messages for git).
+Still, coloring the editor is nice.
+I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Parasitic numbers - did you know?</title><link href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/" rel="alternate"></link><published>2017-01-30T00:00:00+01:00</published><updated>2017-01-30T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-30:/posts/2017/Jan/30/parasitic-numbers-did-you-know/</id><summary type="html">&lt;p&gt;Just learned about a new kind of numbers&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -83,43 +122,4 @@ So, I wrote down the following simple code, and found out:&lt;/p&gt;
 
 &lt;/div&gt;&lt;/p&gt;</content><category term="math"></category></entry><entry><title>First post</title><link href="http://drorata.github.io/posts/2017/Jan/13/first-post/" rel="alternate"></link><published>2017-01-13T13:30:00+01:00</published><updated>2017-01-13T13:30:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-13:/posts/2017/Jan/13/first-post/</id><summary type="html">&lt;h1 id="trying-to-move-to-pelican"&gt;Trying to move to &lt;a href="https://blog.getpelican.com/"&gt;pelican&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;</summary><content type="html">&lt;h1 id="trying-to-move-to-pelican"&gt;Trying to move to &lt;a href="https://blog.getpelican.com/"&gt;pelican&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;</content></entry><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2016/Mar/16/setting-new-computer/" rel="alternate"></link><published>2016-03-16T00:00:00+01:00</published><updated>2016-03-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2016-03-16:/posts/2016/Mar/16/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Docker&lt;/code&gt; Time to start using it, right?&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;DropboxInstaller&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Franz&lt;/code&gt; a universal messenger&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Spotify&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;LibreOffice&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MacPorts&lt;/code&gt; For this one you'd need to install XCode related stuff&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Skim&lt;/code&gt; Much better than the built in Preview&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Skype&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Slack&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Spectacle&lt;/code&gt; Super useful for windows management using the keyboard&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;atom&lt;/code&gt; Well, this is my editor of choice for the past 4 months. I'm not going to change it.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Chrome&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;iTerm2&lt;/code&gt;. However, I'm going to try out &lt;code&gt;Hyper&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Google drive&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;mactex&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nteract&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vlc&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Anaconda python distribution&lt;/li&gt;
-&lt;li&gt;In addition I installed &lt;a href="https://github.com/prat0318/json_resume"&gt;&lt;code&gt;json_resume&lt;/code&gt;&lt;/a&gt; which I use to build my CV.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id="some-more-remarks"&gt;Some more remarks&lt;/h1&gt;
-&lt;h2 id="setting-of-atom"&gt;Setting of Atom&lt;/h2&gt;
-&lt;p&gt;For this I discovered the wonderful plugin &lt;a href="https://atom.io/packages/sync-settings"&gt;sync-settings&lt;/a&gt;.
-This allowed easy copying of the settings and packages from my other box.&lt;/p&gt;
-&lt;h2 id="improved-commandline"&gt;Improved commandline&lt;/h2&gt;
-&lt;p&gt;To that end I use &lt;a href="https://github.com/banga/powerline-shell"&gt;powerline-shell&lt;/a&gt; which I strongly recommend.&lt;/p&gt;
-&lt;h2 id="enabling-pelican"&gt;Enabling Pelican&lt;/h2&gt;
-&lt;p&gt;Pelican is easy to install using &lt;code&gt;pip&lt;/code&gt;.
-However, in addition I had to install the &lt;code&gt;Markdown&lt;/code&gt; module.&lt;/p&gt;
-&lt;h2 id="mapping-to"&gt;Mapping &lt;code&gt;§&lt;/code&gt; to &lt;code&gt;`&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;I got an international English keyboard.
-This means that the upper left key (right under the &lt;code&gt;ESC&lt;/code&gt;) is mapped to &lt;code&gt;§&lt;/code&gt; and &lt;code&gt;±&lt;/code&gt;.
-I lived so long without using these symbols on a regular basis, and thus I decided to map this key to the regular backtick and tilde (&lt;code&gt;~&lt;/code&gt;).
-To that end I used the &lt;a href="https://github.com/tekezo/Karabiner-Elements"&gt;Karabiner-Elements&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="vim-syntax-highlighting"&gt;&lt;code&gt;vim&lt;/code&gt; syntax highlighting&lt;/h2&gt;
-&lt;p&gt;I'm using &lt;code&gt;vim&lt;/code&gt; as the editor in the console (mostly when it comes to commit messages for git).
-Still, coloring the editor is nice.
-I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry></feed>
+&lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;</content></entry></feed>
