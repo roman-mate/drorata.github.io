@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-03-16T00:00:00+01:00</updated><entry><title>Pillars of reproducible data science work</title><link href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/" rel="alternate"></link><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/</id><summary type="html">&lt;p&gt;What does it take to have reproducible data science work? Present a minimal example using Docker.&lt;/p&gt;</summary><content type="html">&lt;h1 id="bare-minimum-of-reproducible-work"&gt;Bare minimum of reproducible work&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-03-20T00:00:00+01:00</updated><entry><title>Remarks on "Data Driven" by Patil &amp; Mason</title><link href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-03-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-20:/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/</id><summary type="html">&lt;p&gt;Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"&lt;/p&gt;</summary><content type="html">&lt;p&gt;I read recently the paper &lt;em&gt;"Data Driven - creating a data culture"&lt;/em&gt; by DJ Patil and Hilary Mason (&lt;a href="http://www.oreilly.com/data/free/data-driven.csp"&gt;link&lt;/a&gt;).
+In this post, I'd like to share some thoughts/remarks/etc. that I collected while reading.&lt;/p&gt;
+&lt;h2 id="communication-skills"&gt;Communication skills&lt;/h2&gt;
+&lt;p&gt;Rather early on the authors mention the importance of &lt;a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/"&gt;communication skills&lt;/a&gt;.
+For "Asking the right questions" one need to be able to communicate with different stakeholders.
+As a data science team, you need to understand what are the pain points of your colleagues and to that end you would have to speak with them.
+You could have Spock, Lieutenant Data, Pinky and the Brain on board but if they can only talk to each other things won't move forward.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Date heroes" src="http://drorata.github.io/images/data-characters.jpg"&gt;&lt;/p&gt;
+&lt;h2 id="data-democratization"&gt;Data democratization&lt;/h2&gt;
+&lt;p&gt;I totally agree that making sure the data of the organization is accessible is important.
+But, there's a bit of a chicken and egg problem here.
+Stakeholders won't look into your amazing data warehouse if it is not clean, understandable, accessible etc.
+But in order to have your data ready for everyone a lot of effort has to be invested.
+Having a sound foundation inside the data science team  can be the solution.
+Make sure that the data exploration processes are as simple and straightforward as possible for the DS team to start with.
+This will result in a nice toy that you can show off around and attract others to dirty their hands with the data.
+In turn, it will be needed to extend the available data, the circles of users etc.&lt;/p&gt;
+&lt;h2 id="ask-the-right-questions"&gt;Ask the right questions&lt;/h2&gt;
+&lt;p&gt;First, make sure you don't answer what you can but what you should.
+This means you have to invest a lot of time in understanding the problem.
+"Starting with the data" as suggested by the scientific method is dangerous as it may mask the business need.
+The formulation of the question has to be derived from the business needs and not from the data.
+Business goals are the reason to do data science in the industry and not merely the intellectual joy that comes from looking into the data.
+Despite of the comments above, still keep in mind that a stupid question is one which was not asked!&lt;/p&gt;
+&lt;h2 id="guiding-questions"&gt;Guiding questions&lt;/h2&gt;
+&lt;p&gt;In the paper there are two lists of questions that I believe are very important and helpful.&lt;/p&gt;
+&lt;h3 id="for-research-management"&gt;For research management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;"What is the question we're asking?"&lt;/em&gt; This one is all about alignment; inside the team and with external stakeholders&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;"How do we know we have won?"&lt;/em&gt; Definition of acceptance criteria&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;"Assuming we solve this problem, what will be build first?"&lt;/em&gt; This one should help us understand whether we're asking the right question&lt;/li&gt;
+&lt;li&gt;The last two questions &lt;em&gt;"If everyone in the world uses this, what is the impact?"&lt;/em&gt; and &lt;em&gt;"What's the most evil thing that can be done with this?"&lt;/em&gt; are of more general nature.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="for-organizational-management"&gt;For organizational management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What are the short-term and long-term goals?&lt;/li&gt;
+&lt;li&gt;Who are the supporters and who are the opponents?&lt;/li&gt;
+&lt;li&gt;What conflicts are likely to arise?&lt;/li&gt;
+&lt;li&gt;What systems are needed to make the data scientists successful?&lt;/li&gt;
+&lt;li&gt;What are the costs and time horizons required to implement those systems?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="general-remarks"&gt;General remarks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dashboards are living entities. It is all about finding the balance between empty dashboard on one hand an overwhelmingly full one on the other hand.&lt;/li&gt;
+&lt;li&gt;During daily stand ups or other sync meetings adhere to the 3 agile questions:&lt;ul&gt;
+&lt;li&gt;What have I done since last sync?&lt;/li&gt;
+&lt;li&gt;What shall I do today/till next sync?&lt;/li&gt;
+&lt;li&gt;What are the impediments?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Share the teams results with interested stakeholders and try to extend the circle&lt;/li&gt;
+&lt;/ul&gt;</content><category term="workflows"></category><category term="research"></category><category term="team"></category></entry><entry><title>Pillars of reproducible data science work</title><link href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/" rel="alternate"></link><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/</id><summary type="html">&lt;p&gt;What does it take to have reproducible data science work? Present a minimal example using Docker.&lt;/p&gt;</summary><content type="html">&lt;h1 id="bare-minimum-of-reproducible-work"&gt;Bare minimum of reproducible work&lt;/h1&gt;
 &lt;p&gt;The output of software development is naturally a software.
 However, when a software developer presents his or her work the compiled binaries are not the whole story.
 It is important to present also the source code, which has to be readable, meet the coding conventions of the team, testable, etc. etc.

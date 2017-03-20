@@ -11787,10 +11787,10 @@ jQuery(document).ready(function($) {
 
   <title>Remarks on "Data Driven" by Patil & Mason | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/drafts/remarks-on-data-driven-by-patil-mason.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
-  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/general.atom.xml" title="Categories Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/ds.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11799,7 +11799,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
-<meta name="description" content="In this post post I will share some notes/thoughts/remarks I collected while reading the paper "Data Driven - creating a data culture" by DJ Patil and Hilary Mason (link). Rather early on the authors mention the importance of communication skills. For "Asking the right questions" one need to be …">
+<meta name="description" content="Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"">
 </head>
 
 <body>
@@ -11835,34 +11835,82 @@ jQuery(document).ready(function($) {
 <article class="article">
   <header>
     <ul class="list-inline">
-      <li class="list-inline-item text-muted" title="2017-03-08T00:00:00+01:00">
+      <li class="list-inline-item text-muted" title="2017-03-20T00:00:00+01:00">
         <i class="fa fa-clock-o"></i>
-        Wed 08 March 2017
+        Mon 20 March 2017
       </li>
       <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
+        <a href="http://drorata.github.io/category/ds.html">DS</a>
       </li>
       <li class="list-inline-item">
         <i class="fa fa-user-o"></i>
         <a href="http://drorata.github.io/author/dror-atariah.html">Dror Atariah</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/workflows.html">#workflows</a>,         <a href="http://drorata.github.io/tag/research.html">#research</a>,         <a href="http://drorata.github.io/tag/team.html">#team</a>      </li>
     </ul>
   </header>
   <div class="content">
-    <p>In this post post I will share some notes/thoughts/remarks I collected while reading the paper <em>"Data Driven - creating a data culture"</em> by DJ Patil and Hilary Mason (<a href="http://www.oreilly.com/data/free/data-driven.csp">link</a>).</p>
+    <p>I read recently the paper <em>"Data Driven - creating a data culture"</em> by DJ Patil and Hilary Mason (<a href="http://www.oreilly.com/data/free/data-driven.csp">link</a>).
+In this post, I'd like to share some thoughts/remarks/etc. that I collected while reading.</p>
+<h2 id="communication-skills">Communication skills</h2>
 <p>Rather early on the authors mention the importance of <a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/">communication skills</a>.
-For "Asking the right questions" one need to be able to communicate with the different stakeholders.
+For "Asking the right questions" one need to be able to communicate with different stakeholders.
 As a data science team, you need to understand what are the pain points of your colleagues and to that end you would have to speak with them.
-You could have Spock, Lieutenant Data, Pinky and the Brain on board but they can only talk to each other things won't
-move forward.</p>
-<p>The obj</p>
+You could have Spock, Lieutenant Data, Pinky and the Brain on board but if they can only talk to each other things won't move forward.</p>
+<p><img alt="Date heroes" src="http://drorata.github.io/images/data-characters.jpg"></p>
+<h2 id="data-democratization">Data democratization</h2>
+<p>I totally agree that making sure the data of the organization is accessible is important.
+But, there's a bit of a chicken and egg problem here.
+Stakeholders won't look into your amazing data warehouse if it is not clean, understandable, accessible etc.
+But in order to have your data ready for everyone a lot of effort has to be invested.
+Having a sound foundation inside the data science team  can be the solution.
+Make sure that the data exploration processes are as simple and straightforward as possible for the DS team to start with.
+This will result in a nice toy that you can show off around and attract others to dirty their hands with the data.
+In turn, it will be needed to extend the available data, the circles of users etc.</p>
+<h2 id="ask-the-right-questions">Ask the right questions</h2>
+<p>First, make sure you don't answer what you can but what you should.
+This means you have to invest a lot of time in understanding the problem.
+"Starting with the data" as suggested by the scientific method is dangerous as it may mask the business need.
+The formulation of the question has to be derived from the business needs and not from the data.
+Business goals are the reason to do data science in the industry and not merely the intellectual joy that comes from looking into the data.
+Despite of the comments above, still keep in mind that a stupid question is one which was not asked!</p>
+<h2 id="guiding-questions">Guiding questions</h2>
+<p>In the paper there are two lists of questions that I believe are very important and helpful.</p>
+<h3 id="for-research-management">For research management</h3>
+<ul>
+<li><em>"What is the question we're asking?"</em> This one is all about alignment; inside the team and with external stakeholders</li>
+<li><em>"How do we know we have won?"</em> Definition of acceptance criteria</li>
+<li><em>"Assuming we solve this problem, what will be build first?"</em> This one should help us understand whether we're asking the right question</li>
+<li>The last two questions <em>"If everyone in the world uses this, what is the impact?"</em> and <em>"What's the most evil thing that can be done with this?"</em> are of more general nature.</li>
+</ul>
+<h3 id="for-organizational-management">For organizational management</h3>
+<ul>
+<li>What are the short-term and long-term goals?</li>
+<li>Who are the supporters and who are the opponents?</li>
+<li>What conflicts are likely to arise?</li>
+<li>What systems are needed to make the data scientists successful?</li>
+<li>What are the costs and time horizons required to implement those systems?</li>
+</ul>
+<h2 id="general-remarks">General remarks</h2>
+<ul>
+<li>Dashboards are living entities. It is all about finding the balance between empty dashboard on one hand an overwhelmingly full one on the other hand.</li>
+<li>During daily stand ups or other sync meetings adhere to the 3 agile questions:<ul>
+<li>What have I done since last sync?</li>
+<li>What shall I do today/till next sync?</li>
+<li>What are the impediments?</li>
+</ul>
+</li>
+<li>Share the teams results with interested stakeholders and try to extend the circle</li>
+</ul>
   </div>
 </article>
 <hr>
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function() {
-    this.page.url = 'http://drorata.github.io/drafts/remarks-on-data-driven-by-patil-mason.html';
+    this.page.url = 'http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/index.html';
     this.page.identifier = 'remarks-on-data-driven-by-patil-mason';
   };
   (function() {
