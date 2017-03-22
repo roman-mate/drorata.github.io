@@ -11785,9 +11785,9 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Setting new computer | Dr. Dror
+  <title>Useful Docker hints | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/index.html">
+  <link rel="canonical" href="http://drorata.github.io/drafts/useful-docker-hints.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/general.atom.xml" title="Categories Atom Feed">
@@ -11799,7 +11799,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
-<meta name="description" content="Mostly notes for myself on what items I installed on a new machine. You might be interested as well.">
+<meta name="description" content="Connecting two containers over network 1 First, start a new network: docker network create new-network Next, start the two containers as follow: docker run -i -t --name cont1 --net=new-network --net-alias=cont1 drorata/base-image /bin/bash docker run -i -t --name cont2 --net=new-network --net-alias=cont2 drorata/base-image /bin/bash …">
 </head>
 
 <body>
@@ -11829,16 +11829,15 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Setting new computer
+      <h1>Useful Docker hints
 </h1>
       <hr>
 <article class="article">
   <header>
     <ul class="list-inline">
-      <li class="list-inline-item text-muted" title="2017-03-16T00:00:00+01:00">
+      <li class="list-inline-item text-muted" title="2017-03-22T00:00:00+01:00">
         <i class="fa fa-clock-o"></i>
-        Thu 16 March 2017
-        (Modified: 2017-03-22)
+        Wed 22 March 2017
       </li>
       <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
@@ -11847,68 +11846,105 @@ jQuery(document).ready(function($) {
       <li class="list-inline-item">
         <i class="fa fa-user-o"></i>
         <a href="http://drorata.github.io/author/dror-atariah.html">Dror Atariah</a>      </li>
-      <li class="list-inline-item">
-        <i class="fa fa-files-o"></i>
-        <a href="http://drorata.github.io/tag/it.html">#IT</a>,         <a href="http://drorata.github.io/tag/computer.html">#computer</a>,         <a href="http://drorata.github.io/tag/apps.html">#apps</a>,         <a href="http://drorata.github.io/tag/settings.html">#settings</a>,         <a href="http://drorata.github.io/tag/superuser.html">#superuser</a>,         <a href="http://drorata.github.io/tag/python.html">#python</a>      </li>
     </ul>
   </header>
   <div class="content">
-    <h1 id="straightforward">Straightforward</h1>
+    <h2 id="connecting-two-containers-over-network-1">Connecting two containers over network <sup id="fnref-7e76b2d7"><a class="footnote-ref" href="#fn-7e76b2d7">1</a></sup></h2>
+<p>First, start a new network:</p>
+<div class="highlight"><pre><span></span>docker network create new-network
+</pre></div>
+
+
+<p>Next, start the two containers as follow:</p>
+<div class="highlight"><pre><span></span>docker run -i -t --name cont1 --net<span class="o">=</span>new-network --net-alias<span class="o">=</span>cont1 drorata/base-image /bin/bash
+docker run -i -t --name cont2 --net<span class="o">=</span>new-network --net-alias<span class="o">=</span>cont2 drorata/base-image /bin/bash
+</pre></div>
+
+
+<h2 id="stop-remove-all-running-containers-2">Stop / Remove all running containers <sup id="fnref-15cde0e3"><a class="footnote-ref" href="#fn-15cde0e3">2</a></sup></h2>
+<div class="highlight"><pre><span></span>docker stop <span class="k">$(</span>docker ps -a -q<span class="k">)</span>
+</pre></div>
+
+
+<p>The last part generates a list of IDs and in turn this list is passed to the <code>stop</code> command.
+Similarly,</p>
+<div class="highlight"><pre><span></span>docker rm <span class="k">$(</span>docker ps -a -q<span class="k">)</span>
+</pre></div>
+
+
+<p>will remove all the stoped containers.
+You can use the <code>-f</code> option for the <code>rm</code> for (brutally) stopping and removing all containers.</p>
+<h2 id="leave-a-container-and-keep-in-alive">Leave a container and keep in alive</h2>
+<p>If you start a new container in interactive mode and enter the shell, like in <code>docker run -i -t ubuntu</code>, and exit it, Docker will stop the container.
+You can check it using <code>docker ps -a</code>.
+The reason is that the process you asked has terminated and the container is stopped.
+To avoid it, you can hit <code>CTRL+P CTRL+Q</code>.
+See this short and excellent <a href="http://stackoverflow.com/questions/25267372/correct-way-to-detach-from-a-container-without-stopping-it">answer</a> and don't forget to read also <a href="http://stackoverflow.com/a/25268154/671013">this one</a>.</p>
+<h2 id="using-anaconda-from-docker">Using Anaconda from Docker</h2>
+<p>First, you can run a simple container having full–fledged Anaconda installation.
+It is as simple as</p>
+<div class="highlight"><pre><span></span>docker run -i -t --name conda-base continuumio/anaconda3 /bin/bash
+</pre></div>
+
+
+<p>Once running, you can python in the container as much as you want.
+As Jupyter is an important part of the work, let's discuss how to use it.
+From the container's terminal you can start Jupyter but that won't be enough.
+The <code>localhost</code> of the container is not the same as of the host OS.
+We'd have to enable port forwarding:</p>
+<div class="highlight"><pre><span></span>docker run -i -t -p 8888:8888 --name conda-base continuumio/anaconda3 /bin/bash
+</pre></div>
+
+
+<p>Next, in the new container's shell run</p>
+<div class="highlight"><pre><span></span>jupyter notebook --ip<span class="o">=</span><span class="s1">&#39;*&#39;</span> --port<span class="o">=</span><span class="m">8888</span> --no-browser
+</pre></div>
+
+
+<p>Go to the address where the notebook is served and enjoy.
+There's one thing missing still, the nice notebooks don't have a place to be saved.
+They can be saved of course in the container, but they won't persists once you stop it.
+You should mount a local directory (on the host) as a data volume:</p>
+<div class="highlight"><pre><span></span>docker run -i -t -p 8888:8888 --name conda-base -v ~/tmp:/opt/notebooks continuumio/anaconda3 /bin/bash
+</pre></div>
+
+
+<p>and inside the container, execute:</p>
+<div class="highlight"><pre><span></span>jupyter notebook --notebook-dir<span class="o">=</span>/opt/notebooks --ip<span class="o">=</span><span class="s1">&#39;*&#39;</span> --port<span class="o">=</span><span class="m">8888</span> --no-browser
+</pre></div>
+
+
+<p>Now, what ever notebook you save from within the container, it will be also available on <code>~/tmp</code>.
+If, for some reason, the container stopped, you can reuse it: <code>docker exec -it conda-base /bin/bash</code>.
+Lastly, putting everything together, you can instantiate a new container as follow:</p>
+<div class="highlight"><pre><span></span>docker run -i -t -p 8888:8888 -v ~/tmp:/opt/notebooks --name conda-base continuumio/anaconda3 /bin/bash -c <span class="s2">&quot;/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=&#39;*&#39; --port=8888 --no-browser&quot;</span>
+</pre></div>
+
+
+<h3 id="references">References</h3>
 <ul>
-<li><code>Docker</code> Time to start using it, right?</li>
-<li><code>DropboxInstaller</code></li>
-<li><code>Franz</code> a universal messenger</li>
-<li><code>Spotify</code></li>
-<li><code>LibreOffice</code></li>
-<li><code>MacPorts</code> For this one you'd need to install XCode related stuff</li>
-<li><code>Skim</code> Much better than the built in Preview</li>
-<li><code>Skype</code></li>
-<li><code>Slack</code></li>
-<li><code>Spectacle</code> Super useful for windows management using the keyboard</li>
-<li><code>atom</code> Well, this is my editor of choice for the past 4 months. I'm not going to change it.</li>
-<li><code>Chrome</code></li>
-<li><code>iTerm2</code>. However, I'm going to try out <code>Hyper</code></li>
-<li>Google drive</li>
-<li><code>mactex</code></li>
-<li><code>nteract</code></li>
-<li><code>vlc</code></li>
-<li>Anaconda python distribution</li>
-<li>In addition I installed <a href="https://github.com/prat0318/json_resume"><code>json_resume</code></a> which I use to build my CV.</li>
+<li><a href="https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume">Mounting local directory</a></li>
+<li><a href="https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science">Running notebook from a container</a></li>
 </ul>
-<h1 id="some-more-remarks">Some more remarks</h1>
-<h2 id="setting-of-atom">Setting of Atom</h2>
-<p>For this I discovered the wonderful plugin <a href="https://atom.io/packages/sync-settings">sync-settings</a>.
-This allowed easy copying of the settings and packages from my other box.</p>
-<h2 id="improved-commandline">Improved commandline</h2>
-<p>To that end I use <a href="https://github.com/banga/powerline-shell">powerline-shell</a> which I strongly recommend.</p>
-<h2 id="enabling-pelican">Enabling Pelican</h2>
-<p>Pelican is easy to install using <code>pip</code>.
-However, in addition I had to install the <code>Markdown</code> module.</p>
-<h2 id="mapping-to">Mapping <code>§</code> to <code>`</code></h2>
-<p>I got an international English keyboard.
-This means that the upper left key (right under the <code>ESC</code>) is mapped to <code>§</code> and <code>±</code>.
-I lived so long without using these symbols on a regular basis, and thus I decided to map this key to the regular backtick and tilde (<code>~</code>).
-To that end I used the <a href="https://github.com/tekezo/Karabiner-Elements">Karabiner-Elements</a>.</p>
-<h2 id="vim-syntax-highlighting"><code>vim</code> syntax highlighting</h2>
-<p>I'm using <code>vim</code> as the editor in the console (mostly when it comes to commit messages for git).
-Still, coloring the editor is nice.
-I Simply added <code>syntax on</code> to <code>~/.vimrc</code>.</p>
-<h2 id="nb-1">N.B. 1</h2>
-<p>After couple of days, as always, there are some additional items to mention:</p>
-<ul>
-<li><a href="https://github.com/Anaconda-Platform/nb_conda_kernels">nb conda kernels</a> to treat Conda environments as Jupyter kernels</li>
-<li>For <a href="http://scikit-learn.org/stable/modules/tree.html#classification">decision trees visualization</a> I had to install <code>GraphViz</code> and <code>pydotplus</code>. The former using MacPorts and the latter using <code>conda install -c conda-forge pydotplus</code>.</li>
-<li><a href="http://pandoc.org/"><code>pandoc</code></a> is a nice to have around</li>
-<li>Similarly, <a href="https://github.com/stedolan/jq/wiki/Installation"><code>jq</code></a> is very important to have around; simply using MacPorts. In addition, <a href="https://beyondgrep.com/">'ack'</a> is worthy installing</li>
-</ul>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-7e76b2d7">
+<p><a href="http://stackoverflow.com/questions/25324860/how-to-create-a-bidirectional-link-between-containers/35577068#35577068">source</a>&#160;<a class="footnote-backref" href="#fnref-7e76b2d7" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn-15cde0e3">
+<p><a href="https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers">source</a>&#160;<a class="footnote-backref" href="#fnref-15cde0e3" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
   </div>
 </article>
 <hr>
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function() {
-    this.page.url = 'http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/index.html';
-    this.page.identifier = 'setting-new-computer';
+    this.page.url = 'http://drorata.github.io/drafts/useful-docker-hints.html';
+    this.page.identifier = 'useful-docker-hints';
   };
   (function() {
     var d = document;
