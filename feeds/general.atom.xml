@@ -46,6 +46,10 @@ I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/co
 &lt;li&gt;For &lt;a href="http://scikit-learn.org/stable/modules/tree.html#classification"&gt;decision trees visualization&lt;/a&gt; I had to install &lt;code&gt;GraphViz&lt;/code&gt; and &lt;code&gt;pydotplus&lt;/code&gt;. The former using MacPorts and the latter using &lt;code&gt;conda install -c conda-forge pydotplus&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pandoc.org/"&gt;&lt;code&gt;pandoc&lt;/code&gt;&lt;/a&gt; is a nice to have around&lt;/li&gt;
 &lt;li&gt;Similarly, &lt;a href="https://github.com/stedolan/jq/wiki/Installation"&gt;&lt;code&gt;jq&lt;/code&gt;&lt;/a&gt; is very important to have around; simply using MacPorts. In addition, &lt;a href="https://beyondgrep.com/"&gt;'ack'&lt;/a&gt; is worthy installing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nb-2"&gt;N.B. 2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How could I forget, spell checking for Jupyter notebooks and other extensions are a must. This is rather straightforward as described &lt;a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions"&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Parasitic numbers - did you know?</title><link href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/" rel="alternate"></link><published>2017-01-30T00:00:00+01:00</published><updated>2017-01-30T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-30:/posts/2017/Jan/30/parasitic-numbers-did-you-know/</id><summary type="html">&lt;p&gt;Just learned about a new kind of numbers&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
