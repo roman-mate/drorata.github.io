@@ -1,5 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-01-20T00:00:00+01:00</updated><entry><title>My getting started with Atom</title><link href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/" rel="alternate"></link><published>2017-01-20T00:00:00+01:00</published><updated>2017-01-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-20:/posts/2017/Jan/20/my-getting-started-with-atom/</id><summary type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-04-03T00:00:00+02:00</updated><entry><title>Useful Docker hints</title><link href="http://drorata.github.io/posts/2017/Apr/03/useful-docker-hints/" rel="alternate"></link><published>2017-04-03T00:00:00+02:00</published><updated>2017-04-03T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-03:/posts/2017/Apr/03/useful-docker-hints/</id><summary type="html">&lt;p&gt;Recently, I started to use and get to know &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;.
+One of my central motivations is to utilize this technology for the creation of &lt;a href="https://github.com/drorata/mwe-jupyter-docker"&gt;reproducible research/work&lt;/a&gt;.
+While preparing this image, I came across many useful items; I collected some of them in this post.&lt;/p&gt;
+&lt;h2 id="connecting-two-containers-over-network-1"&gt;Connecting two containers over network …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;Recently, I started to use and get to know &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;.
+One of my central motivations is to utilize this technology for the creation of &lt;a href="https://github.com/drorata/mwe-jupyter-docker"&gt;reproducible research/work&lt;/a&gt;.
+While preparing this image, I came across many useful items; I collected some of them in this post.&lt;/p&gt;
+&lt;h2 id="connecting-two-containers-over-network-1"&gt;Connecting two containers over network &lt;sup id="fnref-7e76b2d7"&gt;&lt;a class="footnote-ref" href="#fn-7e76b2d7"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+&lt;p&gt;First, start a new network:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker network create new-network
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, start the two containers as follow:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t --name cont1 --net&lt;span class="o"&gt;=&lt;/span&gt;new-network --net-alias&lt;span class="o"&gt;=&lt;/span&gt;cont1 drorata/base-image /bin/bash
+docker run -i -t --name cont2 --net&lt;span class="o"&gt;=&lt;/span&gt;new-network --net-alias&lt;span class="o"&gt;=&lt;/span&gt;cont2 drorata/base-image /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="stop-remove-all-running-containers-2"&gt;Stop / Remove all running containers &lt;sup id="fnref-15cde0e3"&gt;&lt;a class="footnote-ref" href="#fn-15cde0e3"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker stop &lt;span class="k"&gt;$(&lt;/span&gt;docker ps -a -q&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The last part generates a list of IDs and in turn this list is passed to the &lt;code&gt;stop&lt;/code&gt; command.
+Similarly,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker rm &lt;span class="k"&gt;$(&lt;/span&gt;docker ps -a -q&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;will remove all the stoped containers.
+You can use the &lt;code&gt;-f&lt;/code&gt; option for the &lt;code&gt;rm&lt;/code&gt; for (brutally) stopping and removing all containers.&lt;/p&gt;
+&lt;h2 id="leave-a-container-and-keep-in-alive"&gt;Leave a container and keep in alive&lt;/h2&gt;
+&lt;p&gt;If you start a new container in interactive mode and enter the shell, like in &lt;code&gt;docker run -i -t ubuntu&lt;/code&gt;, and exit it, Docker will stop the container.
+You can check it using &lt;code&gt;docker ps -a&lt;/code&gt;.
+The reason is that the process you asked has terminated and the container is stopped.
+To avoid it, you can hit &lt;code&gt;CTRL+P CTRL+Q&lt;/code&gt;.
+See this short and excellent &lt;a href="http://stackoverflow.com/questions/25267372/correct-way-to-detach-from-a-container-without-stopping-it"&gt;answer&lt;/a&gt; and don't forget to read also &lt;a href="http://stackoverflow.com/a/25268154/671013"&gt;this one&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="using-anaconda-from-docker"&gt;Using Anaconda from Docker&lt;/h2&gt;
+&lt;p&gt;First, you can run a simple container having full–fledged Anaconda installation.
+It is as simple as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t --name conda-base continuumio/anaconda3 /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once running, you can python in the container as much as you want.
+As Jupyter is an important part of the work, let's discuss how to use it.
+From the container's terminal you can start Jupyter but that won't be enough.
+The &lt;code&gt;localhost&lt;/code&gt; of the container is not the same as of the host OS.
+We'd have to enable port forwarding:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t -p &lt;span class="m"&gt;8888&lt;/span&gt;:8888 --name conda-base continuumio/anaconda3 /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, in the new container's shell run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jupyter notebook --ip&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt; --port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8888&lt;/span&gt; --no-browser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go to the address where the notebook is served and enjoy.
+There's one thing missing still, the nice notebooks don't have a place to be saved.
+They can be saved of course in the container, but they won't persists once you stop it.
+You should mount a local directory (on the host) as a data volume:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t -p 8888:8888 --name conda-base -v ~/tmp:/opt/notebooks continuumio/anaconda3 /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and inside the container, execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jupyter notebook --notebook-dir&lt;span class="o"&gt;=&lt;/span&gt;/opt/notebooks --ip&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt; --port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8888&lt;/span&gt; --no-browser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, what ever notebook you save from within the container, it will be also available on &lt;code&gt;~/tmp&lt;/code&gt;.
+If, for some reason, the container stopped, you can reuse it: &lt;code&gt;docker exec -it conda-base /bin/bash&lt;/code&gt;.
+Lastly, putting everything together, you can instantiate a new container as follow:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t -p &lt;span class="m"&gt;8888&lt;/span&gt;:8888 -v ~/tmp:/opt/notebooks --name conda-base continuumio/anaconda3 /bin/bash -c &lt;span class="s2"&gt;&amp;quot;/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=&amp;#39;*&amp;#39; --port=8888 --no-browser&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="references"&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume"&gt;Mounting local directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.continuum.io/blog/developer-blog/anaconda-and-docker-better-together-reproducible-data-science"&gt;Running notebook from a container&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="location-of-images-3"&gt;Location of images &lt;sup id="fnref-167a330e"&gt;&lt;a class="footnote-ref" href="#fn-167a330e"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+&lt;p&gt;On Mac images are stored in a file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="running-pyspark-within-jupyter"&gt;Running PySpark within Jupyter&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://github.com/jupyter/docker-stacks/tree/master/pyspark-notebook"&gt;pyspark-notebook&lt;/a&gt; image seems to be a simple and straightforward way to get started with Spark.
+Simply run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -it --rm -p &lt;span class="m"&gt;8888&lt;/span&gt;:8888 jupyter/pyspark-notebook
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Naturally, you can also mount a local directory for persiting the generated notebooks.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-7e76b2d7"&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/25324860/how-to-create-a-bidirectional-link-between-containers/35577068#35577068"&gt;source&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-7e76b2d7" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-15cde0e3"&gt;
+&lt;p&gt;&lt;a href="https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers"&gt;source&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-15cde0e3" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-167a330e"&gt;
+&lt;p&gt;&lt;a href="https://forums.docker.com/t/where-are-images-stored-on-mac-os-x/17165/2"&gt;source&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-167a330e" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="docker"></category><category term="reproducible"></category><category term="research"></category><category term="jupyter"></category></entry><entry><title>My getting started with Atom</title><link href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/" rel="alternate"></link><published>2017-01-20T00:00:00+01:00</published><updated>2017-01-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-20:/posts/2017/Jan/20/my-getting-started-with-atom/</id><summary type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I recently discovered Atom.
 In the past, I've been using Emacs but not so long ago I realized that it is time to move on.
 Sublime Text 3 was the next editor, but only for a short while.

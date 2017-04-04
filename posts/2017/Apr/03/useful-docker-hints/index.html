@@ -11635,8 +11635,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11647,9 +11649,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 </style>
 
@@ -11787,10 +11791,10 @@ jQuery(document).ready(function($) {
 
   <title>Useful Docker hints | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/drafts/useful-docker-hints.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Apr/03/useful-docker-hints/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
-  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/general.atom.xml" title="Categories Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/howto.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11799,7 +11803,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
-<meta name="description" content="Connecting two containers over network 1 First, start a new network: docker network create new-network Next, start the two containers as follow: docker run -i -t --name cont1 --net=new-network --net-alias=cont1 drorata/base-image /bin/bash docker run -i -t --name cont2 --net=new-network --net-alias=cont2 drorata/base-image /bin/bash …">
+<meta name="description" content="Recently, I started to use and get to know Docker. One of my central motivations is to utilize this technology for the creation of reproducible research/work. While preparing this image, I came across many useful items; I collected some of them in this post. Connecting two containers over network …">
 </head>
 
 <body>
@@ -11835,21 +11839,27 @@ jQuery(document).ready(function($) {
 <article class="article">
   <header>
     <ul class="list-inline">
-      <li class="list-inline-item text-muted" title="2017-03-22T00:00:00+01:00">
+      <li class="list-inline-item text-muted" title="2017-04-03T00:00:00+02:00">
         <i class="fa fa-clock-o"></i>
-        Wed 22 March 2017
+        Mon 03 April 2017
       </li>
       <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
+        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
       </li>
       <li class="list-inline-item">
         <i class="fa fa-user-o"></i>
         <a href="http://drorata.github.io/author/dror-atariah.html">Dror Atariah</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/docker.html">#docker</a>,         <a href="http://drorata.github.io/tag/reproducible.html">#reproducible</a>,         <a href="http://drorata.github.io/tag/research.html">#research</a>,         <a href="http://drorata.github.io/tag/jupyter.html">#jupyter</a>      </li>
     </ul>
   </header>
   <div class="content">
-    <h2 id="connecting-two-containers-over-network-1">Connecting two containers over network <sup id="fnref-7e76b2d7"><a class="footnote-ref" href="#fn-7e76b2d7">1</a></sup></h2>
+    <p>Recently, I started to use and get to know <a href="https://www.docker.com/">Docker</a>.
+One of my central motivations is to utilize this technology for the creation of <a href="https://github.com/drorata/mwe-jupyter-docker">reproducible research/work</a>.
+While preparing this image, I came across many useful items; I collected some of them in this post.</p>
+<h2 id="connecting-two-containers-over-network-1">Connecting two containers over network <sup id="fnref-7e76b2d7"><a class="footnote-ref" href="#fn-7e76b2d7">1</a></sup></h2>
 <p>First, start a new network:</p>
 <div class="highlight"><pre><span></span>docker network create new-network
 </pre></div>
@@ -11892,7 +11902,7 @@ As Jupyter is an important part of the work, let's discuss how to use it.
 From the container's terminal you can start Jupyter but that won't be enough.
 The <code>localhost</code> of the container is not the same as of the host OS.
 We'd have to enable port forwarding:</p>
-<div class="highlight"><pre><span></span>docker run -i -t -p 8888:8888 --name conda-base continuumio/anaconda3 /bin/bash
+<div class="highlight"><pre><span></span>docker run -i -t -p <span class="m">8888</span>:8888 --name conda-base continuumio/anaconda3 /bin/bash
 </pre></div>
 
 
@@ -11917,7 +11927,7 @@ You should mount a local directory (on the host) as a data volume:</p>
 <p>Now, what ever notebook you save from within the container, it will be also available on <code>~/tmp</code>.
 If, for some reason, the container stopped, you can reuse it: <code>docker exec -it conda-base /bin/bash</code>.
 Lastly, putting everything together, you can instantiate a new container as follow:</p>
-<div class="highlight"><pre><span></span>docker run -i -t -p 8888:8888 -v ~/tmp:/opt/notebooks --name conda-base continuumio/anaconda3 /bin/bash -c <span class="s2">&quot;/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=&#39;*&#39; --port=8888 --no-browser&quot;</span>
+<div class="highlight"><pre><span></span>docker run -i -t -p <span class="m">8888</span>:8888 -v ~/tmp:/opt/notebooks --name conda-base continuumio/anaconda3 /bin/bash -c <span class="s2">&quot;/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=&#39;*&#39; --port=8888 --no-browser&quot;</span>
 </pre></div>
 
 
@@ -11935,7 +11945,7 @@ Lastly, putting everything together, you can instantiate a new container as foll
 <h2 id="running-pyspark-within-jupyter">Running PySpark within Jupyter</h2>
 <p>The <a href="https://github.com/jupyter/docker-stacks/tree/master/pyspark-notebook">pyspark-notebook</a> image seems to be a simple and straightforward way to get started with Spark.
 Simply run:</p>
-<div class="highlight"><pre><span></span>docker run -it --rm -p 8888:8888 jupyter/pyspark-notebook
+<div class="highlight"><pre><span></span>docker run -it --rm -p <span class="m">8888</span>:8888 jupyter/pyspark-notebook
 </pre></div>
 
 
@@ -11960,7 +11970,7 @@ Simply run:</p>
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function() {
-    this.page.url = 'http://drorata.github.io/drafts/useful-docker-hints.html';
+    this.page.url = 'http://drorata.github.io/posts/2017/Apr/03/useful-docker-hints/index.html';
     this.page.identifier = 'useful-docker-hints';
   };
   (function() {

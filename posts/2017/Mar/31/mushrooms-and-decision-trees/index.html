@@ -11635,8 +11635,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11647,9 +11649,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 </style>
 
@@ -14764,7 +14768,7 @@ Next it computes the score, precision and recall of the model.</p>
     <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
     <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># we override the default here for the sake of reproducibility</span>
     <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-    <span class="n">min_impurity_split</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span> 
+    <span class="n">min_impurity_split</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">,</span> 
     <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
     <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">test_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">);</span>
@@ -14821,7 +14825,7 @@ We will iterate over all the possible values for this parameter while keeping al
         <span class="n">max_features</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> 
         <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># we override the default here for the sake of reproducibility</span>
         <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-        <span class="n">min_impurity_split</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span> 
+        <span class="n">min_impurity_split</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">,</span> 
         <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">test_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">print_res</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -17590,7 +17594,7 @@ Remember that this is using the naive splitting for training and testing!
         <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="c1"># we override the default here for the sake of reproducibility</span>
         <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-        <span class="n">min_impurity_split</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span> 
+        <span class="n">min_impurity_split</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">,</span> 
         <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">test_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">print_res</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
