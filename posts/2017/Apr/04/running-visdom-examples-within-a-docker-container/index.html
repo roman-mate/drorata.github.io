@@ -11789,11 +11789,12 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Dr. Dror | Foo is not just bar
+  <title>Running Visdom examples within a Docker container | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/index2.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/howto.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11802,6 +11803,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
+<meta name="description" content="Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system. I decided to use Docker when having a quick look into Visdom the new toy from Facebook. I'll outline the steps I took. Start a minimal container …">
 </head>
 
 <body>
@@ -11831,104 +11833,102 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Articles
+      <h1>Running Visdom examples within a Docker container
 </h1>
       <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-20T00:00:00+01:00">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-04-04T00:00:00+02:00">
         <i class="fa fa-clock-o"></i>
-        Fri 20 January 2017
+        Tue 04 April 2017
       </li>
-      <li>
+      <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
         <a href="http://drorata.github.io/category/howto.html">HowTo</a>
       </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/docker.html">#docker</a>,         <a href="http://drorata.github.io/tag/visualization.html">#visualization</a>      </li>
     </ul>
   </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/">My getting started with Atom</a></h4>
-    <div class="content">
-      Introduction I recently discovered Atom. In the past, I've been using Emacs but not so long ago I realized that it is time to move on. Sublime Text 3 was the next editor, but only for a short while. Getting to know Atom and the fact it is free made …
-    </div>
+  <div class="content">
+    <p>Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
+I decided to use Docker when having a quick look into <a href="https://github.com/facebookresearch/visdom">Visdom</a> the new toy from Facebook.
+I'll outline the steps I took.</p>
+<h2 id="start-a-minimal-container">Start a minimal container</h2>
+<p>Here I decided to use the readymade <a href="https://hub.docker.com/r/continuumio/anaconda3/">continuumio/anaconda3</a>.
+I started a container:</p>
+<div class="highlight"><pre><span></span>docker run -i -t -p <span class="m">8097</span>:8097 -v ~/tmp:/opt/notebooks --name visdom-test continuumio/anaconda3 /bin/bash
+</pre></div>
+
+
+<p>Next, I installed <code>Visdom</code>:</p>
+<div class="highlight"><pre><span></span>pip install visdom
+</pre></div>
+
+
+<p>Lastly, I could run the server:</p>
+<div class="highlight"><pre><span></span>python -m visdom.server
+</pre></div>
+
+
+<p>At this point I could open <a href="http://localhost:8097"><code>http://localhost:8097</code></a> and see the empty visualization.</p>
+<h2 id="running-some-examples">Running some examples</h2>
+<h3 id="basic-example">Basic example</h3>
+<p>I placed a file <code>fb-visdom-example.py</code> in <code>~/tmp</code> containing the example:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visdom</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">visdom</span><span class="o">.</span><span class="n">Visdom</span><span class="p">()</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>Then, I started another <code>bash</code> process on my container:</p>
+<div class="highlight"><pre><span></span>docker <span class="nb">exec</span> -it visdom-test /bin/bash
+</pre></div>
+
+
+<p>From the new console I could run the example <code>python /opt/notebooks/fb-visdom-example.py</code></p>
+<h3 id="running-demopy">Running <code>demo.py</code></h3>
+<p>Now, I wanted to run <a href="https://github.com/facebookresearch/visdom/blob/master/example/demo.py"><code>demo.py</code></a>.
+To that end I simply cloned the repository:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /
+git clone https://github.com/facebookresearch/visdom.git
+</pre></div>
+
+
+<p>and ran the example <code>python /visdom/example/demo.py</code>.
+As a matter of fact, this example breaks on this setting with the following error:</p>
+<div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;visdom/example/demo.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">232</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">viz</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;Visdom&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;mesh&#39;</span>
+</pre></div>
+
+
+<p>It is almost the end of the demo, but still a little annoying; I opened a <a href="https://github.com/facebookresearch/visdom/issues/59">bug</a>.</p>
   </div>
 </article>
 <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-18T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Wed 18 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/">Experiment with Jupyter</a></h4>
-    <div class="content">
-      Outline how to utilize Jupyter notebooks.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-16T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Mon 16 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/">Installing Spark on macOS (Sierra)</a></h4>
-    <div class="content">
-      How did I install Spark on my macOS
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-13T13:30:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Fri 13 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/13/first-post/">First post</a></h4>
-    <div class="content">
-      Trying to move to pelican Following is a review of my favorite mechanical keyboard.
-    </div>
-  </div>
-</article>
-<hr>
-<ul class="pagination">
-  <li class="page-item">
-    <a class="page-link" href="http://drorata.github.io/index.html">
-      <span aria-hidden="true">&laquo;</span>
-      <span class="sr-only">Previous</span>
-    </a>
-  </li>
-  <li class="page-item disabled">
-    <span class="page-link">2 of 2</span>
-  </li>
-</ul>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/index.html';
+    this.page.identifier = 'running-visdom-examples-within-a-docker-container';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//dr-dror.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 

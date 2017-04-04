@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-04-04T00:00:00+02:00</updated><entry><title>Useful Docker hints</title><link href="http://drorata.github.io/posts/2017/Apr/04/useful-docker-hints/" rel="alternate"></link><published>2017-04-04T00:00:00+02:00</published><updated>2017-04-04T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-04:/posts/2017/Apr/04/useful-docker-hints/</id><summary type="html">&lt;p&gt;Recently, I started to use and get to know &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - HowTo</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-04-04T00:00:00+02:00</updated><entry><title>Running Visdom examples within a Docker container</title><link href="http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/" rel="alternate"></link><published>2017-04-04T00:00:00+02:00</published><updated>2017-04-04T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-04:/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/</id><summary type="html">&lt;p&gt;Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
+I decided to use Docker when having a quick look into &lt;a href="https://github.com/facebookresearch/visdom"&gt;Visdom&lt;/a&gt; the new toy from Facebook.
+I'll outline the steps I took.&lt;/p&gt;
+&lt;h2 id="start-a-minimal-container"&gt;Start a minimal container …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
+I decided to use Docker when having a quick look into &lt;a href="https://github.com/facebookresearch/visdom"&gt;Visdom&lt;/a&gt; the new toy from Facebook.
+I'll outline the steps I took.&lt;/p&gt;
+&lt;h2 id="start-a-minimal-container"&gt;Start a minimal container&lt;/h2&gt;
+&lt;p&gt;Here I decided to use the readymade &lt;a href="https://hub.docker.com/r/continuumio/anaconda3/"&gt;continuumio/anaconda3&lt;/a&gt;.
+I started a container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -i -t -p &lt;span class="m"&gt;8097&lt;/span&gt;:8097 -v ~/tmp:/opt/notebooks --name visdom-test continuumio/anaconda3 /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, I installed &lt;code&gt;Visdom&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install visdom
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lastly, I could run the server:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -m visdom.server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point I could open &lt;a href="http://localhost:8097"&gt;&lt;code&gt;http://localhost:8097&lt;/code&gt;&lt;/a&gt; and see the empty visualization.&lt;/p&gt;
+&lt;h2 id="running-some-examples"&gt;Running some examples&lt;/h2&gt;
+&lt;h3 id="basic-example"&gt;Basic example&lt;/h3&gt;
+&lt;p&gt;I placed a file &lt;code&gt;fb-visdom-example.py&lt;/code&gt; in &lt;code&gt;~/tmp&lt;/code&gt; containing the example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;visdom&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="n"&gt;vis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;visdom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Visdom&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;vis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello, world!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;vis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ones&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, I started another &lt;code&gt;bash&lt;/code&gt; process on my container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker &lt;span class="nb"&gt;exec&lt;/span&gt; -it visdom-test /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;From the new console I could run the example &lt;code&gt;python /opt/notebooks/fb-visdom-example.py&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="running-demopy"&gt;Running &lt;code&gt;demo.py&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Now, I wanted to run &lt;a href="https://github.com/facebookresearch/visdom/blob/master/example/demo.py"&gt;&lt;code&gt;demo.py&lt;/code&gt;&lt;/a&gt;.
+To that end I simply cloned the repository:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /
+git clone https://github.com/facebookresearch/visdom.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and ran the example &lt;code&gt;python /visdom/example/demo.py&lt;/code&gt;.
+As a matter of fact, this example breaks on this setting with the following error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;visdom/example/demo.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;232&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="n"&gt;viz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mesh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;opacity&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="ne"&gt;AttributeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Visdom&amp;#39;&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt; &lt;span class="n"&gt;attribute&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mesh&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It is almost the end of the demo, but still a little annoying; I opened a &lt;a href="https://github.com/facebookresearch/visdom/issues/59"&gt;bug&lt;/a&gt;.&lt;/p&gt;</content><category term="docker"></category><category term="visualization"></category></entry><entry><title>Useful Docker hints</title><link href="http://drorata.github.io/posts/2017/Apr/04/useful-docker-hints/" rel="alternate"></link><published>2017-04-04T00:00:00+02:00</published><updated>2017-04-04T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-04:/posts/2017/Apr/04/useful-docker-hints/</id><summary type="html">&lt;p&gt;Recently, I started to use and get to know &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;.
 One of my central motivations is to utilize this technology for the creation of reproducible research/work.
 The first minimal working example I came up with contains a notebook which loads the data from a CSV file which is part …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started to use and get to know &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;.
 One of my central motivations is to utilize this technology for the creation of reproducible research/work.
