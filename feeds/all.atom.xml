@@ -1,5 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-04-04T00:00:00+02:00</updated><entry><title>Running Visdom examples within a Docker container</title><link href="http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/" rel="alternate"></link><published>2017-04-04T00:00:00+02:00</published><updated>2017-04-04T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-04:/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/</id><summary type="html">&lt;p&gt;Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-05-08T00:00:00+02:00</updated><entry><title>SQL Server and macOS --- my first take</title><link href="http://drorata.github.io/posts/2017/May/08/sql-server-and-macos-my-first-take/" rel="alternate"></link><published>2017-05-08T00:00:00+02:00</published><updated>2017-05-08T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-08:/posts/2017/May/08/sql-server-and-macos-my-first-take/</id><summary type="html">&lt;p&gt;The 90s are back and it turns out that cross platform approach doesn't apply for MS SQL Server.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started working at &lt;a href="http://www.rebuy.com"&gt;reBuy&lt;/a&gt; and discovered that the data warehouse has recently migrated to &lt;a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server"&gt;MS SQL Server&lt;/a&gt;.
+Naively, I thought that it would not be much of an impediment; I was wrong.
+Over the past 7 years I am mostly using Mac, and beforehand I used to have Linux boxes for couple of years.
+The last time I really worked on a Windows machine was 10+ years ago.
+By sharing this history with you, I try to explain why I didn't consider switching to Microsoft OS.&lt;/p&gt;
+&lt;p&gt;Not too surprisingly, as a data scientist, the first step on day &lt;span class="math"&gt;\(1 + \epsilon\)&lt;/span&gt; was to access the data.
+At this point my affection to macOS and the company's DWH conflicted.
+One of the first stops in the journey to solve the conflict was this &lt;a href="http://stackoverflow.com/q/3452/671013"&gt;SO thread&lt;/a&gt;.
+This thread is a good example of a question whose answer is not really solving the problem introduced by the poster.&lt;/p&gt;
+&lt;h2 id="desktop-client"&gt;Desktop client&lt;/h2&gt;
+&lt;p&gt;Before diving into hacky workarounds, I tried virtually all the clients suggested in that post.
+To cut a long story short, I ended up using &lt;a href="https://www.dbvis.com/"&gt;DBVisualizer&lt;/a&gt;.
+Its free version is OK and at least allows one to execute SQL queries.
+To be honest, I didn't try to evaluate any kind of more fancy features.
+It managed to address the immediate need --- first look at the data checked.&lt;/p&gt;
+&lt;h2 id="whats-next"&gt;What's next?&lt;/h2&gt;
+&lt;p&gt;I feel relatively comfortable with SQL, but I am much more comfortable and productive with Pandas.
+So, the next step for me was to figure out how to query the DWH from Python.
+For example, I wanted to take advantage of &lt;a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql_query.html"&gt;&lt;code&gt;pandas.read_sql_query&lt;/code&gt;&lt;/a&gt;.
+This led me to investigate how to connect &lt;a href="https://www.sqlalchemy.org/"&gt;SQLalchemy&lt;/a&gt; to MS SQL &lt;em&gt;from a macOS box&lt;/em&gt;.
+Ultimately I found two ways: one using &lt;a href="http://pymssql.org/en/stable/"&gt;&lt;code&gt;pymssql&lt;/code&gt;&lt;/a&gt; alone and the other together with SQLalchemy.&lt;/p&gt;
+&lt;h3 id="pymssql-alone"&gt;&lt;code&gt;pymssql&lt;/code&gt; alone&lt;/h3&gt;
+&lt;p&gt;In order to establish the connection I ran:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pymssql&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;my.great.server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;WINDOWSDOMAIN\username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mysecretpassword&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1433&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note the need to provide the domain (in capital letters).
+In turn, an actual query can be executed:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;select top 10 * from db.schema.table1&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_sql&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="pymssql-and-sqlalchemy-together"&gt;&lt;code&gt;pymssql&lt;/code&gt; and SQLalchemy together&lt;/h3&gt;
+&lt;p&gt;I also managed to query the DWH using a combination of &lt;code&gt;pymssql&lt;/code&gt; and SQLalchemy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;eng&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlalchemy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_engine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mssql+pymssql://WINDOWSDOMAIN\username:mysecretpassword@my.great.server:1433/db&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;connection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;eng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;select top 10 * from schema.table1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As a side remark, which probably deserve a post of its own, once using SQLalchemy I also managed to connect &lt;a href="https://github.com/airbnb/superset"&gt;Superset&lt;/a&gt; to the DWH. YAY.&lt;/p&gt;
+&lt;h2 id="atom-ic-connection"&gt;Atom-ic connection?&lt;/h2&gt;
+&lt;p&gt;DBVisualizer is/was OK.
+Nothing more.
+I like using my keyboard and as my editor of choice is Atom, I decided to try and utilize it.
+It worked out &lt;em&gt;fabulously&lt;/em&gt;.
+The needed package is &lt;a href="https://atom.io/packages/data-atom"&gt;Data Atom&lt;/a&gt; and the setting up is rather straightforward.
+You might want to fiddle with the &lt;a href="https://github.com/lukemurray/data-atom/issues/125"&gt;&lt;code&gt;Timeout&lt;/code&gt; setting&lt;/a&gt; but as long as the results set is limited this works like a charm.&lt;/p&gt;
+&lt;p&gt;Interestingly, I failed to connect Visual Studio Code to the DWH.
+I thought that as MS are developing VSC, it is likely that the DWH and the celebrated editor will be able to communicate.
+In theory this is &lt;a href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-develop-use-vscode"&gt;possible&lt;/a&gt;, but in practice, from a macOS box, &lt;a href="https://github.com/Microsoft/vscode-mssql/issues/824#issuecomment-296846325"&gt;it is not&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="securing-the-passwords"&gt;Securing the passwords&lt;/h2&gt;
+&lt;p&gt;I ended up, for the time being, using Atom and DBVisualizer.
+I spend most of my time on the DWH using Atom, and revert to the latter tool when I need to explore the schema of the database.
+Once I know what I need, I take the results set offline into Pandas.
+The biggest concern I have at the moment is the securing of the passwords.
+Both for &lt;code&gt;pymssql&lt;/code&gt; and the Data Atom package, the passwords are stored as strings.
+I didn't find a way around it yet albeit I'm sure there must be one; after all Superset manages the passwords somehow.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="SQL"></category><category term="atom"></category><category term="python"></category><category term="mac"></category></entry><entry><title>Running Visdom examples within a Docker container</title><link href="http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/" rel="alternate"></link><published>2017-04-04T00:00:00+02:00</published><updated>2017-04-04T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-04-04:/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/</id><summary type="html">&lt;p&gt;Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
 I decided to use Docker when having a quick look into &lt;a href="https://github.com/facebookresearch/visdom"&gt;Visdom&lt;/a&gt; the new toy from Facebook.
 I'll outline the steps I took.&lt;/p&gt;
 &lt;h2 id="start-a-minimal-container"&gt;Start a minimal container …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system.
