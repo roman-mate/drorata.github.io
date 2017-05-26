@@ -11814,11 +11814,12 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>#hypothesis Articles | Dr. Dror
+  <title>When trying to hash a data frame | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/tag/hypothesis.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/May/26/when-trying-to-hash-a-data-frame/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/general.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11827,6 +11828,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
+<meta name="description" content="TL;DR The function pandas.DataFrame.values is not the inverse of pd.DataFrame(np.array). Introduction An important part of reproducible data science work, is the ability to apply the DAG on the very same dataset. Simplest option is to commit the datasets to a VCS like git. This …">
 </head>
 
 <body>
@@ -11856,29 +11858,125 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>#hypothesis Articles
+      <h1>When trying to hash a data frame
 </h1>
       <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-27T00:00:00+01:00">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-05-26T00:00:00+02:00">
         <i class="fa fa-clock-o"></i>
-        Fri 27 January 2017
+        Fri 26 May 2017
       </li>
-      <li>
+      <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/stats.html">Stats</a>
+        <a href="http://drorata.github.io/category/general.html">General</a>
       </li>
     </ul>
   </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/">Playing around with $t$-test</a></h4>
-    <div class="content">
-      Heights measuring and means evaluations
-    </div>
+  <div class="content">
+    <h2 id="tldr">TL;DR</h2>
+<p>The function <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.values.html"><code>pandas.DataFrame.values</code></a> is not the inverse of <code>pd.DataFrame(np.array)</code>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>An important part of reproducible data science work, is the ability to apply the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a> on the very same dataset.
+Simplest option is to commit the datasets to a VCS like <code>git</code>.
+This has the problem that VCSs are simply not designed for this.
+Ultimately, a dataset is the result of an ETL process.
+Tracking the ETL process is easy and fits VCSs.
+In some sense this is enough; but not quite right.
+A hidden assumption in this case, is that the sources from which the ETL process fetches the raw data from are not changing.
+This is a rather strong assumption and not necessarily holding in all settings.
+A way to verify that the product of the ETL process is the same is to use two hashes:</p>
+<ol>
+<li>Hash of the code behind the ETL process (you get it for free from <code>git</code>)</li>
+<li>Hash the product of the ETL process; namely, the resulting dataset</li>
+</ol>
+<p>Having these two hashes, one can checkout the code of the ETL process, run it and compare the hash of the resulting dataset and the second hash.
+If the two are the same, we have a very strong indication that the datasets are the same.
+Right, if they are <em>not</em> the same we merely know the two datasets are not the same.
+Most likely due to changes in the sources which feed the ETL process.
+This line of thought made me look into hashing possibilities of <code>pandas.DataFrame</code>s.</p>
+<h2 id="hashing-a-data-frame">Hashing a data frame</h2>
+<p><a href="https://stackoverflow.com/a/41715431/671013">Google</a> suggested that I should represent the data frame in bytes and hash this representation.
+Problem is that there's no straightforward way to turn a data frame into bytes stream.
+A more-or-less canonical way would be to convert the data frame to an array of <code>numpy</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Here's an example which worked nicely:</p>
+<div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+</pre></div>
+
+
+<p>Repeatedly evaluating this code always yield the same hash <code>ddfee4572d380bef86d3ebe3cb7bfa7c68b7744f55f67f4e1ca5f6872c2c9ba1</code>.
+However, as soon as we introduce a string into the game, things are no longer predictable.
+Repeatedly invoking the following shows that the hash of the data frame is not kept:</p>
+<div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+</pre></div>
+
+
+<p>The reason here is that <code>df.values != arr</code>.
+As a matter of fact, it seems like each time we evaluate <code>df.value</code> we get a new object.
+Annoyingly enough, <code>np.array_equal(df.values, arr)</code> is <strong>true</strong> because it compares the values.</p>
+<h3 id="workaround">Workaround</h3>
+<p>The workaround I can suggest is to use some string representation of the data frame, and hash the bytes representation of the string representation.
+For example:</p>
+<div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+</pre></div>
+
+
+<p>Obviously the downsides are:</p>
+<ol>
+<li>The hash won't be the same as the one of the original array</li>
+<li>If the data frame is big, this can be very lengthy</li>
+</ol>
+<p>But, it works.
+You can find a summarizing <a href="https://gist.github.com/drorata/bfc5d956c4fb928dcc77510a33009691">notebook here</a>.
+In addition, I have also opened a <a href="https://github.com/pandas-dev/pandas/issues/16517">ticket on the matter</a>.</p>
+<h2 id="solution">Solution</h2>
+<p>Well, it turns out, that opening the bug was helpful.
+As of 0.20.1, it is possible to <a href="https://github.com/pandas-dev/pandas/issues/16517#issuecomment-304364225">hash data frames</a>!</p>
   </div>
 </article>
+<hr>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'http://drorata.github.io/posts/2017/May/26/when-trying-to-hash-a-data-frame/index.html';
+    this.page.identifier = 'when-trying-to-hash-a-data-frame';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//dr-dror.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 

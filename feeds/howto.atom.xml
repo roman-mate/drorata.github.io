@@ -322,7 +322,9 @@ Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed me
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -334,7 +336,10 @@ Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed me
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#download-spark"&gt;Download Spark&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#set-and-test"&gt;Set and test&lt;/a&gt;&lt;ul&gt;

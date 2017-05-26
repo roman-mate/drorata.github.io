@@ -1,5 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-05-08T00:00:00+02:00</updated><entry><title>SQL Server and macOS --- my first take</title><link href="http://drorata.github.io/posts/2017/May/08/sql-server-and-macos-my-first-take/" rel="alternate"></link><published>2017-05-08T00:00:00+02:00</published><updated>2017-05-08T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-08:/posts/2017/May/08/sql-server-and-macos-my-first-take/</id><summary type="html">&lt;p&gt;The 90s are back and it turns out that cross platform approach doesn't apply for MS SQL Server.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started working at &lt;a href="http://www.rebuy.com"&gt;reBuy&lt;/a&gt; and discovered that the data warehouse has recently migrated to &lt;a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server"&gt;MS SQL Server&lt;/a&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-05-26T00:00:00+02:00</updated><entry><title>When trying to hash a data frame</title><link href="http://drorata.github.io/posts/2017/May/26/when-trying-to-hash-a-data-frame/" rel="alternate"></link><published>2017-05-26T00:00:00+02:00</published><updated>2017-05-26T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-26:/posts/2017/May/26/when-trying-to-hash-a-data-frame/</id><summary type="html">&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;The function &lt;a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.values.html"&gt;&lt;code&gt;pandas.DataFrame.values&lt;/code&gt;&lt;/a&gt; is not the inverse of &lt;code&gt;pd.DataFrame(np.array)&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;An important part of reproducible data science work, is the ability to apply the &lt;a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph"&gt;DAG&lt;/a&gt; on the very same dataset.
+Simplest option is to commit the datasets to a VCS like &lt;code&gt;git&lt;/code&gt;.
+This …&lt;/p&gt;</summary><content type="html">&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;The function &lt;a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.values.html"&gt;&lt;code&gt;pandas.DataFrame.values&lt;/code&gt;&lt;/a&gt; is not the inverse of &lt;code&gt;pd.DataFrame(np.array)&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;An important part of reproducible data science work, is the ability to apply the &lt;a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph"&gt;DAG&lt;/a&gt; on the very same dataset.
+Simplest option is to commit the datasets to a VCS like &lt;code&gt;git&lt;/code&gt;.
+This has the problem that VCSs are simply not designed for this.
+Ultimately, a dataset is the result of an ETL process.
+Tracking the ETL process is easy and fits VCSs.
+In some sense this is enough; but not quite right.
+A hidden assumption in this case, is that the sources from which the ETL process fetches the raw data from are not changing.
+This is a rather strong assumption and not necessarily holding in all settings.
+A way to verify that the product of the ETL process is the same is to use two hashes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Hash of the code behind the ETL process (you get it for free from &lt;code&gt;git&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Hash the product of the ETL process; namely, the resulting dataset&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Having these two hashes, one can checkout the code of the ETL process, run it and compare the hash of the resulting dataset and the second hash.
+If the two are the same, we have a very strong indication that the datasets are the same.
+Right, if they are &lt;em&gt;not&lt;/em&gt; the same we merely know the two datasets are not the same.
+Most likely due to changes in the sources which feed the ETL process.
+This line of thought made me look into hashing possibilities of &lt;code&gt;pandas.DataFrame&lt;/code&gt;s.&lt;/p&gt;
+&lt;h2 id="hashing-a-data-frame"&gt;Hashing a data frame&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/a/41715431/671013"&gt;Google&lt;/a&gt; suggested that I should represent the data frame in bytes and hash this representation.
+Problem is that there's no straightforward way to turn a data frame into bytes stream.
+A more-or-less canonical way would be to convert the data frame to an array of &lt;code&gt;numpy&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here's an example which worked nicely:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;41&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Repeatedly evaluating this code always yield the same hash &lt;code&gt;ddfee4572d380bef86d3ebe3cb7bfa7c68b7744f55f67f4e1ca5f6872c2c9ba1&lt;/code&gt;.
+However, as soon as we introduce a string into the game, things are no longer predictable.
+Repeatedly invoking the following shows that the hash of the data frame is not kept:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The reason here is that &lt;code&gt;df.values != arr&lt;/code&gt;.
+As a matter of fact, it seems like each time we evaluate &lt;code&gt;df.value&lt;/code&gt; we get a new object.
+Annoyingly enough, &lt;code&gt;np.array_equal(df.values, arr)&lt;/code&gt; is &lt;strong&gt;true&lt;/strong&gt; because it compares the values.&lt;/p&gt;
+&lt;h3 id="workaround"&gt;Workaround&lt;/h3&gt;
+&lt;p&gt;The workaround I can suggest is to use some string representation of the data frame, and hash the bytes representation of the string representation.
+For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tobytes&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_json&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_csv&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Obviously the downsides are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The hash won't be the same as the one of the original array&lt;/li&gt;
+&lt;li&gt;If the data frame is big, this can be very lengthy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;But, it works.
+You can find a summarizing &lt;a href="https://gist.github.com/drorata/bfc5d956c4fb928dcc77510a33009691"&gt;notebook here&lt;/a&gt;.
+In addition, I have also opened a &lt;a href="https://github.com/pandas-dev/pandas/issues/16517"&gt;ticket on the matter&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="solution"&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Well, it turns out, that opening the bug was helpful.
+As of 0.20.1, it is possible to &lt;a href="https://github.com/pandas-dev/pandas/issues/16517#issuecomment-304364225"&gt;hash data frames&lt;/a&gt;!&lt;/p&gt;</content></entry><entry><title>SQL Server and macOS --- my first take</title><link href="http://drorata.github.io/posts/2017/May/08/sql-server-and-macos-my-first-take/" rel="alternate"></link><published>2017-05-08T00:00:00+02:00</published><updated>2017-05-08T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-08:/posts/2017/May/08/sql-server-and-macos-my-first-take/</id><summary type="html">&lt;p&gt;The 90s are back and it turns out that cross platform approach doesn't apply for MS SQL Server.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started working at &lt;a href="http://www.rebuy.com"&gt;reBuy&lt;/a&gt; and discovered that the data warehouse has recently migrated to &lt;a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server"&gt;MS SQL Server&lt;/a&gt;.
 Naively, I thought that it would not be much of an impediment; I was wrong.
 Over the past 7 years I am mostly using Mac, and beforehand I used to have Linux boxes for couple of years.
 The last time I really worked on a Windows machine was 10+ years ago.
@@ -393,7 +479,9 @@ The as obtained from the repository above doesn't have headers, therefore I crea
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+
 
 &lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
 &lt;div&gt;
@@ -586,7 +674,9 @@ The data size is&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -635,7 +725,9 @@ The data size is&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -674,7 +766,9 @@ The data size is&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -716,7 +810,9 @@ Name: class, dtype: int64&lt;/pre&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -818,7 +914,9 @@ The &lt;code&gt;bruises&lt;/code&gt; column has two possible categorical values:
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -977,7 +1075,9 @@ Here is a simple usage:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -1016,7 +1116,9 @@ Here is a simple usage:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -1095,7 +1197,9 @@ We will take training sets of increasing sizes and evaluate the &lt;a href="http
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -1781,7 +1885,9 @@ In turn, we will evaluate the performances of the trees like before.&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -2297,7 +2403,9 @@ By simply counting the number of poisonous vs. edible mushrooms in the first $n$
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -2782,7 +2890,9 @@ This can be better visualized (known as stacked area) as follows:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -3212,7 +3322,9 @@ Next it computes the score, precision and recall of the model.&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Accuracy = 0.740045 / Precision = 0.555077 / Recall = 0.914843
 &lt;/pre&gt;
@@ -3277,7 +3389,9 @@ We will iterate over all the possible values for this parameter while keeping al
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -6046,7 +6160,9 @@ Remember that this is using the naive splitting for training and testing!
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -6581,7 +6697,9 @@ Next, we train the tree using the defaults.&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea output_execute_result"&gt;
@@ -10857,7 +10975,9 @@ If we adjust the &lt;code&gt;min_samples_leaf&lt;/code&gt; parameter and set it 
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea output_execute_result"&gt;
@@ -14982,7 +15102,9 @@ EEIIIYQQQgghhBBCiJb4//zgh5PkYvbqAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Accuracy = 1.000000 / Precision = 1.000000 / Recall = 1.000000
 &lt;/pre&gt;
@@ -15017,7 +15139,10 @@ If you decide to do so, the risk is all yours!&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/p&gt;</content><category term="decision"></category><category term="trees"></category><category term="python"></category></entry><entry><title>Remarks on "Data Driven" by Patil &amp; Mason</title><link href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-03-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-20:/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/</id><summary type="html">&lt;p&gt;Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"&lt;/p&gt;</summary><content type="html">&lt;p&gt;I read recently the paper &lt;em&gt;"Data Driven - creating a data culture"&lt;/em&gt; by DJ Patil and Hilary Mason (&lt;a href="http://www.oreilly.com/data/free/data-driven.csp"&gt;link&lt;/a&gt;).
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="decision"></category><category term="trees"></category><category term="python"></category></entry><entry><title>Remarks on "Data Driven" by Patil &amp; Mason</title><link href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-03-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-20:/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/</id><summary type="html">&lt;p&gt;Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"&lt;/p&gt;</summary><content type="html">&lt;p&gt;I read recently the paper &lt;em&gt;"Data Driven - creating a data culture"&lt;/em&gt; by DJ Patil and Hilary Mason (&lt;a href="http://www.oreilly.com/data/free/data-driven.csp"&gt;link&lt;/a&gt;).
 In this post, I'd like to share some thoughts/remarks/etc. that I collected while reading.&lt;/p&gt;
 &lt;h2 id="communication-skills"&gt;Communication skills&lt;/h2&gt;
 &lt;p&gt;Rather early on the authors mention the importance of &lt;a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/"&gt;communication skills&lt;/a&gt;.
@@ -15226,7 +15351,9 @@ In this particular example we synthetically generate points on a linear function
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15258,7 +15385,9 @@ In this particular example we synthetically generate points on a linear function
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15320,7 +15449,9 @@ In this particular example we synthetically generate points on a linear function
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15379,7 +15510,9 @@ Note, as we are dealing with a linear model, there is no way of ending up with &
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -15799,7 +15932,9 @@ $a$, a.k.a. the slope, is directly computed by:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15838,7 +15973,9 @@ $a$, a.k.a. the slope, is directly computed by:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15877,7 +16014,9 @@ $a$, a.k.a. the slope, is directly computed by:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -15916,7 +16055,9 @@ $a$, a.k.a. the slope, is directly computed by:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -16026,7 +16167,9 @@ In each iterations, we will register the coefficient and the intercept of the tr
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -16548,7 +16691,9 @@ We can now check the closed formulas, and compare them to the coefficient and in
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[15]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[15]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -16587,7 +16732,9 @@ We can now check the closed formulas, and compare them to the coefficient and in
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -16628,7 +16775,9 @@ We can now check the closed formulas, and compare them to the coefficient and in
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -16667,7 +16816,9 @@ We can now check the closed formulas, and compare them to the coefficient and in
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[18]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[18]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -16690,7 +16841,10 @@ In the future I will explain this in details.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/p&gt;</content><category term="linear"></category><category term="regression"></category><category term="model"></category><category term="example"></category></entry><entry><title>Thoughts about data science teams</title><link href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/" rel="alternate"></link><published>2017-02-19T00:00:00+01:00</published><updated>2017-02-19T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-02-19:/posts/2017/Feb/19/thoughts-about-data-science-teams/</id><summary type="html">&lt;p&gt;Some thoughts about the traits needed to establish a successful data science team.&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the positive things about my current situation (read job hunting), is that it provides a good excuse to meet many different people from many different domains.
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="linear"></category><category term="regression"></category><category term="model"></category><category term="example"></category></entry><entry><title>Thoughts about data science teams</title><link href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/" rel="alternate"></link><published>2017-02-19T00:00:00+01:00</published><updated>2017-02-19T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-02-19:/posts/2017/Feb/19/thoughts-about-data-science-teams/</id><summary type="html">&lt;p&gt;Some thoughts about the traits needed to establish a successful data science team.&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the positive things about my current situation (read job hunting), is that it provides a good excuse to meet many different people from many different domains.
 This is indeed the case for me.
 Furthermore, this state makes you think a lot about your domain, what is your position in it and so on.
 You know, the kind of &lt;em&gt;thoughts-about-life&lt;/em&gt; mode.&lt;/p&gt;
@@ -16910,7 +17064,9 @@ So, I wrote down the following simple code, and found out:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;0
 102564
@@ -16926,7 +17082,10 @@ So, I wrote down the following simple code, and found out:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;</content><category term="math"></category></entry><entry><title>Playing around with $t$-test</title><link href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/" rel="alternate"></link><published>2017-01-27T00:00:00+01:00</published><updated>2017-01-27T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-27:/posts/2017/Jan/27/playing-around-with-t-test/</id><summary type="html">&lt;p&gt;Heights measuring and means evaluations&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="math"></category></entry><entry><title>Playing around with $t$-test</title><link href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/" rel="alternate"></link><published>2017-01-27T00:00:00+01:00</published><updated>2017-01-27T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-27:/posts/2017/Jan/27/playing-around-with-t-test/</id><summary type="html">&lt;p&gt;Heights measuring and means evaluations&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
@@ -17074,7 +17233,9 @@ Here are the first 3 rows:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+
 
 &lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
 &lt;div&gt;
@@ -17181,7 +17342,9 @@ Here are the first 3 rows:&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -17388,7 +17551,9 @@ We will iterate over all the samples, and run a $t$-test against the fixed $H_0$
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+
 
 &lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
 &lt;div&gt;
@@ -17472,7 +17637,9 @@ In the next step we mark with $1$ (i.e. accepted) the cases where the $p$-value 
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
 
 &lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
 &lt;div&gt;
@@ -17563,7 +17730,9 @@ In the next step we mark with $1$ (i.e. accepted) the cases where the $p$-value 
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -18690,7 +18859,10 @@ However, the bigger the sample, the more precises the test is; i.e. we correctly
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/p&gt;</content><category term="t-test"></category><category term="hypothesis"></category></entry><entry><title>My getting started with Atom</title><link href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/" rel="alternate"></link><published>2017-01-20T00:00:00+01:00</published><updated>2017-01-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-20:/posts/2017/Jan/20/my-getting-started-with-atom/</id><summary type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="t-test"></category><category term="hypothesis"></category></entry><entry><title>My getting started with Atom</title><link href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/" rel="alternate"></link><published>2017-01-20T00:00:00+01:00</published><updated>2017-01-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-20:/posts/2017/Jan/20/my-getting-started-with-atom/</id><summary type="html">&lt;h1 id="introduction"&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I recently discovered Atom.
 In the past, I've been using Emacs but not so long ago I realized that it is time to move on.
 Sublime Text 3 was the next editor, but only for a short while.
@@ -18843,7 +19015,9 @@ Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed me
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -18855,7 +19029,10 @@ Don't forget to include in the post (&lt;code&gt;.md&lt;/code&gt;) the needed me
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/p&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
+&lt;/div&gt;
+ 
+
+&lt;/p&gt;</content><category term="python"></category><category term="jupyter"></category><category term="pelican"></category><category term="blogging"></category></entry><entry><title>Installing Spark on macOS (Sierra)</title><link href="http://drorata.github.io/posts/2017/Jan/16/installing-spark-on-macos-sierra/" rel="alternate"></link><published>2017-01-16T00:00:00+01:00</published><updated>2017-01-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-16:/posts/2017/Jan/16/installing-spark-on-macos-sierra/</id><summary type="html">&lt;p&gt;How did I install Spark on my macOS&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#download-spark"&gt;Download Spark&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#set-and-test"&gt;Set and test&lt;/a&gt;&lt;ul&gt;
