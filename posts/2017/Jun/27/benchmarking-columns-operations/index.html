@@ -11814,11 +11814,12 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Authors | Dr. Dror
+  <title>Benchmarking Columns Operations | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/authors.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Jun/27/benchmarking-columns-operations/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/ds.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11826,6 +11827,8 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/pygments/default.min.css">
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
+
+<meta name="description" content="Benchmarking different ways to process two columns simultaneously.">
 </head>
 
 <body>
@@ -11855,15 +11858,304 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Authors
+      <h1>Benchmarking Columns Operations
 </h1>
       <hr>
-<table class="table table-bordered table-striped table-hover">
-  <tr>
-    <td><a href="http://drorata.github.io/author/dror-atariah.html">Dror Atariah</a></td>
-    <td>18</td>
-  </tr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-06-27T00:00:00+02:00">
+        <i class="fa fa-clock-o"></i>
+        Tue 27 June 2017
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="http://drorata.github.io/category/ds.html">DS</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/python.html">#python</a>,         <a href="http://drorata.github.io/tag/pandas.html">#pandas</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I recently ran the following experiment.
+The reason was my need to perform operations on two columns.
+Think for example in terms of features engineering; you want to produce an new feature (i.e. column) which is the ratio of the some other two columns.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>foo</th>
+      <th>bar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.065648</td>
+      <td>0.593402</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.592051</td>
+      <td>0.123502</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.621030</td>
+      <td>0.629470</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.210630</td>
+      <td>0.462535</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.263708</td>
+      <td>0.807304</td>
+    </tr>
+  </tbody>
 </table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Iterating-over-the-rows">Iterating over the rows<a class="anchor-link" href="#Iterating-over-the-rows">&#182;</a></h2><p>Here we iterate over the rows, and access the indexes of the <code>pd.Series</code> which represents the row.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span>
+pd.Series([
+    x[1][&#39;foo&#39;] * x[1][&#39;bar&#39;] for x in df.iterrows()
+])
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>518 ms ± 60 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Applying-a-function">Applying a function<a class="anchor-link" href="#Applying-a-function">&#182;</a></h2><p>Here we use <code>pd.DataFrame.apply</code> and provide the axis.
+This is actually, the solution I had to use in a case which I now longer remember its details.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span>
+df.apply(lambda x: x[&#39;foo&#39;] * x[&#39;bar&#39;], axis=1)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>299 ms ± 43.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Columns-operations">Columns operations<a class="anchor-link" href="#Columns-operations">&#182;</a></h2><p>Best and fastest approach; at least for this simple case.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span>
+df.foo.mul(df.bar)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>97.2 µs ± 11.9 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>Obviously, for the simple multiplication, the last option is the most pythonic (and the fastest as well).
+But, still due to an edge case I decided to run this test.
+Maybe someone would find it helpful.</p>
+
+</div>
+</div>
+</div>
+ 
+
+</p>
+  </div>
+</article>
+<hr>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'http://drorata.github.io/posts/2017/Jun/27/benchmarking-columns-operations/index.html';
+    this.page.identifier = 'benchmarking-columns-operations';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//dr-dror.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 
