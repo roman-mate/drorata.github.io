@@ -11814,11 +11814,12 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Dror Atariah Articles | Dr. Dror
+  <title>FOO Why do we need to divide by n-1? | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/author/dror-atariah2.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Sep/02/foo-why-do-we-need-to-divide-by-n-1/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/howto.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11827,6 +11828,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
+<meta name="description" content="FOO Trying to give an intuitive understanding what's the difference between a biased and unbiased estimators of variance of a sample.">
 </head>
 
 <body>
@@ -11856,236 +11858,690 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Dror Atariah Articles
+      <h1>FOO Why do we need to divide by n-1?
 </h1>
       <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-31T00:00:00+02:00">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-09-02T00:00:00+02:00">
         <i class="fa fa-clock-o"></i>
-        Fri 31 March 2017
+        Sat 02 September 2017
       </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ml.html">ML</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/31/mushrooms-and-decision-trees/">Mushrooms and decision trees</a></h4>
-    <div class="content">
-      Playing around with decision trees on a dataset of mushrooms
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-20T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Mon 20 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/">Remarks on "Data Driven" by Patil & Mason</a></h4>
-    <div class="content">
-      Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-16T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Thu 16 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/">Pillars of reproducible data science work</a></h4>
-    <div class="content">
-      What does it take to have reproducible data science work? Present a minimal example using Docker.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-16T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Thu 16 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/">Setting new computer</a></h4>
-    <div class="content">
-      Mostly notes for myself on what items I installed on a new machine. You might be interested as well.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-07T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Tue 07 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ml.html">ML</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/07/minimal-example-with-linear-regression/">Minimal example with linear regression</a></h4>
-    <div class="content">
-      Basic and synthetic example how to train a linear regression model.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-02-19T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Sun 19 February 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/">Thoughts about data science teams</a></h4>
-    <div class="content">
-      Some thoughts about the traits needed to establish a successful data science team.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-30T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Mon 30 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/">Parasitic numbers - did you know?</a></h4>
-    <div class="content">
-      Just learned about a new kind of numbers
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-27T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Fri 27 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/stats.html">Stats</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/">Playing around with $t$-test</a></h4>
-    <div class="content">
-      Heights measuring and means evaluations
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-20T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Fri 20 January 2017
-      </li>
-      <li>
+      <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
         <a href="http://drorata.github.io/category/howto.html">HowTo</a>
       </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/python.html">#python</a>,         <a href="http://drorata.github.io/tag/pandas.html">#pandas</a>      </li>
     </ul>
   </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/">My getting started with Atom</a></h4>
-    <div class="content">
-      Introduction I recently discovered Atom. In the past, I've been using Emacs but not so long ago I realized that it is time to move on. Sublime Text 3 was the next editor, but only for a short while. Getting to know Atom and the fact it is free made …
-    </div>
+  <div class="content">
+    <p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It seems to be a reappearing question: <em>what is the difference between <code>pandas.std</code> and <code>numpy.std</code>?</em>.
+See for example <a href="https://stackoverflow.com/q/24984178/671013">this</a> SO thread.
+But what does it mean that Pandas uses the unbiased estimator and Numpy does not?
+In this post I would like to help you understand what is the difference and when which should be used.
+I will try to achieve this by following the paper <em>"Why divide by $N-1$?"</em> by J. L. M. Wilkins <a href="http://www.soe.vt.edu/tandl/pdf/Wilkins/Publications_Wilkins_Why_divide_by_n_1.pdf">(link)</a>.
+In particular instead of using archaic software, I will redo the examples using Numpy and Pandas.</p>
+<h2 id="Background">Background<a class="anchor-link" href="#Background">&#182;</a></h2><p>What is the average and the standard deviation of height of humans?
+To answer this question, let us denote by $X$ the <em>whole</em> population of humanity (at the moment); each individual would be denoted by $X_i$.
+The average (or mean), denoted by $\mu$ can be computed by $$\mu = \frac{\sum_{i=1}^N X_i}{N}$$ where $N$ is the number of individuals.
+Next, the standard deviation is given by: $$\sigma = \sqrt{\frac{\sum_{i=1}^N (X_i - \mu)^2}{N}}$$
+Recall that the variance is given and denoted by $\sigma^2$; we will consider the variance from now on.</p>
+<p>This task is, obviously, impossible to accomplish.
+What you are likely to do is pick a sample $X_{i(1)}, X_{i(2)}, \dots, X_{i(n)}$, where $n &lt; N$ and $i(k)$ is a permutation.
+For the sake of simplicity, let us denote them by $X_i$ where $i=1,\dots,n$.
+Using this sample you will compute the sample mean, denoted by $\bar{X}$ and the sample variance.</p>
+<p>The first part, that is, the mean of the sample, is easy: $$\bar{X} = \frac{\sum_{j=1}^n X_j}{n}$$
+It turns out that $\bar{X}$ is an <em>unbiased</em> estimator of $\mu$.
+See for example <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator#cite_note-JohnsonWichern2007-1">reference</a>.</p>
+<p>Things become trickier when it comes to the sample's variance, denoted by $S^2$.
+One may try to compute $S^2$ by formula for $\sigma^2$.
+This would be: $$S_n^2 = \frac{\sum_{i=1}^n(X_i - \bar{X})^2}{n}$$
+However, this <em>is</em> biased estimator of $\sigma^2$.
+The unbiased estimator is $$S^2 = \frac{\sum_{i=1}^n(X_i - \bar{X})^2}{n-1}$$</p>
+<p>All this is explained nicely and in a deeper way in various places; even <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator">Wikipedia</a> is a good start.
+An intuitive explanation can be found <a href="https://stats.stackexchange.com/q/3931/54320">here</a>.
+In this post, I will follow the examples of Wilkins and give better motivation that indeed $S_n^2$ is biased and $S^2$ is not.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Let-the-game-begin">Let the game begin<a class="anchor-link" href="#Let-the-game-begin">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before we start, let us stress that by default, <code>pandas.std</code> is equivalent to $S^2$ and <code>numpy.std</code> to $S_n^2$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm_notebook</span> <span class="k">as</span> <span class="n">tqdm</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We start with a population $a$ consisting of the numbers $1$ to $100$ (inclusive).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The mean $\mu$ is</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>50.5</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we compute $\sigma^2$; we use the default behavior of <code>np.std</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>833.25</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we start an experiment.
+Next we will iteratively sample $a$.
+We take sample sizes of $n = 5, 10, 25, 50$ and $100$.
+For each sample size, we compute $15000$ times $S^2$ and $S_n^2$.
+Lastly, we average the results for each sample size.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SIZES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">15000</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Sn_s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">SIZE</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">SIZES</span><span class="p">):</span>
+    <span class="n">size_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+        <span class="n">size_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">SIZE</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">Sn_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_res</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">Sn_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Sn_s</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">SIZES</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="3eec4a48-be5a-4ece-a8c6-54b6b5618727"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#3eec4a48-be5a-4ece-a8c6-54b6b5618727');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a7c123c008c849449d02f8a80e1250bf"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="078f3895-f848-4ec9-9b60-fc77e46350a8"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#078f3895-f848-4ec9-9b60-fc77e46350a8');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a2c8d8dcd3e24f6d8537429e06eb87c0"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="abc3f38d-d5c8-4919-8369-191702f93d9a"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#abc3f38d-d5c8-4919-8369-191702f93d9a');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "192e90153bdd445ba885afc0b8875f29"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="49d76918-0bc2-463b-8098-ed51203d8ce7"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#49d76918-0bc2-463b-8098-ed51203d8ce7');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "611dbe012747464d9f7d91beb13b4850"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="f248b563-7b12-4a36-8ca8-aeaf8195bb01"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#f248b563-7b12-4a36-8ca8-aeaf8195bb01');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8d64328816e74cdd91c767d36f19d6e2"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="0574f6f8-8663-49b4-b3ff-0ea7874b3990"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#0574f6f8-8663-49b4-b3ff-0ea7874b3990');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fe8936e1aaa945e193ebdb2f5c56be49"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">S_s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">SIZE</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">SIZES</span><span class="p">):</span>
+    <span class="n">size_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+        <span class="n">size_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">SIZE</span><span class="p">),</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">S_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_res</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">S_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">S_s</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">SIZES</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="ec976fc9-381c-4d16-9b43-caf2f1def12d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ec976fc9-381c-4d16-9b43-caf2f1def12d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c1513a29506d4224aca9adc2ba6316c7"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="b971a7a8-eb20-46d6-81e4-1ab60ebd224b"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b971a7a8-eb20-46d6-81e4-1ab60ebd224b');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f4f973ce5aad4782b6c10e2442fb9c0d"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="e53ea97f-c3a3-438e-b9b9-34f4c5ac92a8"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e53ea97f-c3a3-438e-b9b9-34f4c5ac92a8');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "4adfe1680d194230adbacea2f8c780b8"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="dc99e8f7-385b-4916-827e-a4e8bb23acd6"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#dc99e8f7-385b-4916-827e-a4e8bb23acd6');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9da4922d4e2b4410a950cc9be27a1cc6"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="fbdc91e2-da48-42d0-b4f9-f3fca60832bc"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#fbdc91e2-da48-42d0-b4f9-f3fca60832bc');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a52e07e0eb2047e3837b3436e1f6b609"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+
+ 
+ 
+<div id="50822aa8-881d-402b-81e1-8606c17de0fa"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#50822aa8-881d-402b-81e1-8606c17de0fa');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "78f451e644fe495baaae7f666d8c1def"}
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's collect the results into a table.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">Sn_s</span><span class="p">,</span> <span class="n">S_s</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;S_n^2&#39;</span><span class="p">,</span> <span class="s1">&#39;S^2&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>S_n^2</th>
+      <th>S^2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>662.066811</td>
+      <td>829.344820</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>753.069949</td>
+      <td>832.139016</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>800.339726</td>
+      <td>833.032410</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>816.057653</td>
+      <td>832.629917</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>825.280869</td>
+      <td>832.035099</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that $\sigma^2 = 833.25$.
+It is clear that the $n-1$ normalization yields better approximation of the variance of the population.
+This approximation is already fairly accurate when using mere $5\%$ of the population as a sample.</p>
+
+</div>
+</div>
+</div>
+ 
+
+</p>
   </div>
 </article>
 <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-18T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Wed 18 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/">Experiment with Jupyter</a></h4>
-    <div class="content">
-      Outline how to utilize Jupyter notebooks.
-    </div>
-  </div>
-</article>
-<hr>
-<ul class="pagination">
-  <li class="page-item">
-    <a class="page-link" href="http://drorata.github.io/author/dror-atariah.html">
-      <span aria-hidden="true">&laquo;</span>
-      <span class="sr-only">Previous</span>
-    </a>
-  </li>
-  <li class="page-item disabled">
-    <span class="page-link">2 of 3</span>
-  </li>
-  <li class="page-item">
-    <a class="page-link" href="http://drorata.github.io/author/dror-atariah3.html">
-      <span aria-hidden="true">&raquo;</span>
-      <span class="sr-only">Next</span>
-    </a>
-  </li>
-</ul>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'http://drorata.github.io/posts/2017/Sep/02/foo-why-do-we-need-to-divide-by-n-1/index.html';
+    this.page.identifier = 'foo-why-do-we-need-to-divide-by-n-1';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//dr-dror.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 

@@ -11814,11 +11814,12 @@ jQuery(document).ready(function($) {
 
 
 
-  <title>Dror Atariah Articles | Dr. Dror
+  <title>Why do we need to divide by n-1? | Dr. Dror
 </title>
-  <link rel="canonical" href="http://drorata.github.io/author/dror-atariah2.html">
+  <link rel="canonical" href="http://drorata.github.io/posts/2017/Sep/02/why-do-we-need-to-divide-by-n-1/index.html">
 
   <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="http://drorata.github.io/feeds/stats.atom.xml" title="Categories Atom Feed">
 
 
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/bootstrap.min.css">
@@ -11827,6 +11828,7 @@ jQuery(document).ready(function($) {
   <link rel="stylesheet" href="http://drorata.github.io/theme/css/style.css">
 
 
+<meta name="description" content="Trying to give an intuitive understanding what's the difference between a biased and unbiased estimators of variance of a sample.">
 </head>
 
 <body>
@@ -11856,236 +11858,259 @@ jQuery(document).ready(function($) {
 
   <div class="main">
     <div class="container">
-      <h1>Dror Atariah Articles
+      <h1>Why do we need to divide by n-1?
 </h1>
       <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-31T00:00:00+02:00">
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2017-09-02T00:00:00+02:00">
         <i class="fa fa-clock-o"></i>
-        Fri 31 March 2017
+        Sat 02 September 2017
       </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ml.html">ML</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/31/mushrooms-and-decision-trees/">Mushrooms and decision trees</a></h4>
-    <div class="content">
-      Playing around with decision trees on a dataset of mushrooms
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-20T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Mon 20 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/">Remarks on "Data Driven" by Patil & Mason</a></h4>
-    <div class="content">
-      Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-16T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Thu 16 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/">Pillars of reproducible data science work</a></h4>
-    <div class="content">
-      What does it take to have reproducible data science work? Present a minimal example using Docker.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-16T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Thu 16 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/16/setting-new-computer/">Setting new computer</a></h4>
-    <div class="content">
-      Mostly notes for myself on what items I installed on a new machine. You might be interested as well.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-03-07T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Tue 07 March 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ml.html">ML</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Mar/07/minimal-example-with-linear-regression/">Minimal example with linear regression</a></h4>
-    <div class="content">
-      Basic and synthetic example how to train a linear regression model.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-02-19T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Sun 19 February 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/ds.html">DS</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/">Thoughts about data science teams</a></h4>
-    <div class="content">
-      Some thoughts about the traits needed to establish a successful data science team.
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-30T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Mon 30 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/general.html">General</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/">Parasitic numbers - did you know?</a></h4>
-    <div class="content">
-      Just learned about a new kind of numbers
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-27T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Fri 27 January 2017
-      </li>
-      <li>
+      <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
         <a href="http://drorata.github.io/category/stats.html">Stats</a>
       </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="http://drorata.github.io/tag/python.html">#python</a>,         <a href="http://drorata.github.io/tag/pandas.html">#pandas</a>      </li>
     </ul>
   </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/">Playing around with $t$-test</a></h4>
-    <div class="content">
-      Heights measuring and means evaluations
-    </div>
+  <div class="content">
+    <p>It seems to be a reappearing question: <em>what is the difference between <code>pandas.std</code> and <code>numpy.std</code>?</em>.
+See for example <a href="https://stackoverflow.com/q/24984178/671013">this</a> SO thread.
+But what does it mean that Pandas uses the unbiased estimator and Numpy does not?
+In this post I would like to help you understand what is the difference and when which should be used.
+I will try to achieve this by following the paper <em>"Why divide by <span class="math">\(N-1\)</span>?"</em> by J. L. M. Wilkins <a href="http://www.soe.vt.edu/tandl/pdf/Wilkins/Publications_Wilkins_Why_divide_by_n_1.pdf">(link)</a>.
+In particular instead of using archaic software, I will redo the examples using Numpy and Pandas.</p>
+<h2 id="background">Background</h2>
+<p>What is the average and the standard deviation of height of humans?
+To answer this question, let us denote by <span class="math">\(X\)</span> the <em>whole</em> population of humanity (at the moment); each individual would be denoted by <span class="math">\(X_i\)</span>.
+The average (or mean), denoted by <span class="math">\(\mu\)</span> can be computed by </p>
+<div class="math">$$\mu = \frac{\sum_{i=1}^N X_i}{N}$$</div>
+<p> where <span class="math">\(N\)</span> is the number of individuals.
+Next, the standard deviation is given by: </p>
+<div class="math">$$\sigma = \sqrt{\frac{\sum_{i=1}^N (X_i - \mu)^2}{N}}$$</div>
+<p>
+Recall that the variance is given and denoted by <span class="math">\(\sigma^2\)</span>; we will consider the variance from now on.</p>
+<p>This task is, obviously, impossible to accomplish.
+What you are likely to do is pick a sample <span class="math">\(X_{i(1)}, X_{i(2)}, \dots, X_{i(n)}\)</span>, where <span class="math">\(n &lt; N\)</span> and <span class="math">\(i(k)\)</span> is a permutation.
+For the sake of simplicity, let us denote them by <span class="math">\(X_i\)</span> where <span class="math">\(i=1,\dots,n\)</span>.
+Using this sample you will compute the sample mean, denoted by <span class="math">\(\bar{X}\)</span> and the sample variance.</p>
+<p>The first part, that is, the mean of the sample, is easy: </p>
+<div class="math">$$\bar{X} = \frac{\sum_{j=1}^n X_j}{n}$$</div>
+<p>
+It turns out that <span class="math">\(\bar{X}\)</span> is an <em>unbiased</em> estimator of <span class="math">\(\mu\)</span>.
+See for example <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator#cite_note-JohnsonWichern2007-1">reference</a>.</p>
+<p>Things become trickier when it comes to the sample's variance, denoted by <span class="math">\(S^2\)</span>.
+One may try to compute <span class="math">\(S^2\)</span> by formula for <span class="math">\(\sigma^2\)</span>.
+This would be: </p>
+<div class="math">$$S_n^2 = \frac{\sum_{i=1}^n(X_i - \bar{X})^2}{n}$$</div>
+<p>
+However, this <em>is</em> biased estimator of <span class="math">\(\sigma^2\)</span>.
+The unbiased estimator is </p>
+<div class="math">$$S^2 = \frac{\sum_{i=1}^n(X_i - \bar{X})^2}{n-1}$$</div>
+<p>All this is explained nicely and in a deeper way in various places; even <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator">Wikipedia</a> is a good start.
+An intuitive explanation can be found <a href="https://stats.stackexchange.com/q/3931/54320">here</a>.
+In this post, I will follow the examples of Wilkins and give better motivation that indeed <span class="math">\(S_n^2\)</span> is biased and <span class="math">\(S^2\)</span> is not.</p>
+<h2 id="let-the-game-begin">Let the game begin</h2>
+<p>Before we start, let us stress that by default, <code>pandas.std</code> is equivalent to <span class="math">\(S^2\)</span> and <code>numpy.std</code> to <span class="math">\(S_n^2\)</span>.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm_notebook</span> <span class="k">as</span> <span class="n">tqdm</span>
+</pre></div>
+
+
+<p>We start with a population <span class="math">\(a\)</span> consisting of the numbers <span class="math">\(1\)</span> to <span class="math">\(100\)</span> (inclusive).</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The mean <span class="math">\(\mu\)</span> is</p>
+<div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>50.5
+</pre></div>
+
+
+<p>Next, we compute <span class="math">\(\sigma^2\)</span>; we use the default behavior of <code>np.std</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>833.25
+</pre></div>
+
+
+<p>Now we start an experiment.
+Next we will iteratively sample <span class="math">\(a\)</span>.
+We take sample sizes of <span class="math">\(n = 5, 10, 25, 50\)</span> and <span class="math">\(100\)</span>.
+For each sample size, we compute <span class="math">\(15000\)</span> times <span class="math">\(S^2\)</span> and <span class="math">\(S_n^2\)</span>.
+Lastly, we average the results for each sample size.</p>
+<div class="highlight"><pre><span></span><span class="n">SIZES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">15000</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">Sn_s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">SIZE</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">SIZES</span><span class="p">):</span>
+    <span class="n">size_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+        <span class="n">size_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">SIZE</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">Sn_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_res</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">Sn_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Sn_s</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">SIZES</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">S_s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">SIZE</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">SIZES</span><span class="p">):</span>
+    <span class="n">size_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+        <span class="n">size_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">SIZE</span><span class="p">),</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">S_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size_res</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">S_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">S_s</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">SIZES</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Let's collect the results into a table.</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">Sn_s</span><span class="p">,</span> <span class="n">S_s</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;S_n^2&#39;</span><span class="p">,</span> <span class="s1">&#39;S^2&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>S_n^2</th>
+      <th>S^2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>663.580837</td>
+      <td>829.979647</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>753.382400</td>
+      <td>838.010270</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>800.425157</td>
+      <td>831.912702</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>816.102835</td>
+      <td>834.065074</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>825.624747</td>
+      <td>832.706439</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Recall that <span class="math">\(\sigma^2 = 833.25\)</span>.
+It is clear that the <span class="math">\(n-1\)</span> normalization yields better approximation of the variance of the population.
+This approximation is already fairly accurate when using mere <span class="math">\(5\%\)</span> of the population as a sample.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </div>
 </article>
 <hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-20T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Fri 20 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/">My getting started with Atom</a></h4>
-    <div class="content">
-      Introduction I recently discovered Atom. In the past, I've been using Emacs but not so long ago I realized that it is time to move on. Sublime Text 3 was the next editor, but only for a short while. Getting to know Atom and the fact it is free made …
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-18T00:00:00+01:00">
-        <i class="fa fa-clock-o"></i>
-        Wed 18 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/">Experiment with Jupyter</a></h4>
-    <div class="content">
-      Outline how to utilize Jupyter notebooks.
-    </div>
-  </div>
-</article>
-<hr>
-<ul class="pagination">
-  <li class="page-item">
-    <a class="page-link" href="http://drorata.github.io/author/dror-atariah.html">
-      <span aria-hidden="true">&laquo;</span>
-      <span class="sr-only">Previous</span>
-    </a>
-  </li>
-  <li class="page-item disabled">
-    <span class="page-link">2 of 3</span>
-  </li>
-  <li class="page-item">
-    <a class="page-link" href="http://drorata.github.io/author/dror-atariah3.html">
-      <span aria-hidden="true">&raquo;</span>
-      <span class="sr-only">Next</span>
-    </a>
-  </li>
-</ul>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'http://drorata.github.io/posts/2017/Sep/02/why-do-we-need-to-divide-by-n-1/index.html';
+    this.page.identifier = 'why-do-we-need-to-divide-by-n-1';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//dr-dror.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
     </div>
   </div>
 
