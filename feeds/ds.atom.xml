@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - DS</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/ds.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-06-27T00:00:00+02:00</updated><entry><title>Benchmarking Columns Operations</title><link href="http://drorata.github.io/posts/2017/Jun/27/benchmarking-columns-operations/" rel="alternate"></link><published>2017-06-27T00:00:00+02:00</published><updated>2017-06-27T00:00:00+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-06-27:/posts/2017/Jun/27/benchmarking-columns-operations/</id><summary type="html">&lt;p&gt;Benchmarking different ways to process two columns simultaneously.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - DS</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/ds.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-09-22T21:56:58+02:00</updated><entry><title>Messages taken home from "AI in Data Science presented by RecdoTech"</title><link href="http://drorata.github.io/posts/2017/Sep/22/messages-taken-home-from-ai-in-data-science-presented-by-recdotech/" rel="alternate"></link><published>2017-09-22T21:55:48+02:00</published><updated>2017-09-22T21:56:58+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-09-22:/posts/2017/Sep/22/messages-taken-home-from-ai-in-data-science-presented-by-recdotech/</id><summary type="html">&lt;p&gt;Some remarks and highlights from taken from a meetup I attended.&lt;/p&gt;</summary><content type="html">&lt;p&gt;On September 14th (2017) I attended the first meet organized by RecdoTech&lt;sup id="fnref-b5d84a8f"&gt;&lt;a class="footnote-ref" href="#fn-b5d84a8f"&gt;2&lt;/a&gt;&lt;/sup&gt;.
+Although organized by be a recruitment agency, it turned out to be a real meetup.
+There should have been three talks, but eventually there were only two.&lt;/p&gt;
+&lt;p&gt;The first talk, by &lt;a href="https://www.linkedin.com/in/luba-weissmann-47b7757/"&gt;Luba Weissmann&lt;/a&gt;, introduce the basics concepts and ideas from the world of credit scoring.
+In particular, Luba discussed how FinTech harnesses data science to understand behavioral aspects of individuals asking for credit.
+The speaker tried to make a very clear distinction between &lt;em&gt;machine learning&lt;/em&gt; and &lt;em&gt;AI&lt;/em&gt;; for her the main differentiator is the way the decision is made.
+Personally, I was not convinced, and I think primary reason to use the term AI in this context, is to create more hype.
+It is often the case, that AI is considered an umbrella of different automated decision making approaches.
+Many of them are employing machine learning, but not only.&lt;sup id="fnref-5fa6e1e7"&gt;&lt;a class="footnote-ref" href="#fn-5fa6e1e7"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;An interesting point raised by Luba is that regulators are introducing hurdles to the integration of AI (in the broader sense) into credit scoring.
+The reason might be a little surprising: in a nutshell, when credit is denied, the customer (let it be an individual or a company) has the right to know why the rejection happened.
+However, assuming the reason for rejection is due to an algorithm which returned some value, it is not necessarily clear and trivial to explain why and in turn it may be hard to explain this to the customer.
+Have deep learning in mind, as a clear example where the algorithm may suggest rejection, but understanding &lt;em&gt;why&lt;/em&gt; is very complicated.&lt;/p&gt;
+&lt;p&gt;The second talk, by &lt;a href="https://www.linkedin.com/in/sfoucaud/"&gt;Sébastien Foucaud&lt;/a&gt;, was more high level, and provided ideas and insights into the meaning of having data science as part of business landscape.
+In the business world, the results of data science work have to have impact.
+The needle has to move!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="VU meter" src="http://drorata.github.io/images/VU_Meter.gif"&gt;&lt;/p&gt;
+&lt;p&gt;The data scientist who wishes to survive and strive in the business world, has to add value to the operations.
+Even research labs ran by big players are, at the end of the day, about adding value to the company.
+This holds for sure when it comes to small/medium size companies and startups, where the impact has to be present.
+Sébastien used the term &lt;em&gt;business driven data scientist&lt;/em&gt;; I liked it especially when there is so much noise around the data drivenness approach.
+It is impossible to be data driven without, first, be business driven.
+Along this line of thought, Sébastien also mentioned that the model does not matter; it is its integration and impact that count.
+To that end, if you have a model which delivers then no one cares about its beauty, complexity or how ingenious it is.
+As a scientist this is sometimes hard to accept; you are trained to deliver perfection, because otherwise your paper will not be accepted.&lt;/p&gt;
+&lt;p&gt;Another point discussed during the talk was related to data quality.
+"Not all data is useful" and you need your data to be "smart".
+Having big data does not necessarily imply it is smart.
+Sometimes, the overhead derived by big data is so much bigger, that at the end of the day the impact is marginal.
+The most important key to &lt;em&gt;smart data&lt;/em&gt; is to have it labeled or flagged.
+This is the only way that the data scientist can really derive insights out of it.
+Facebook, Google, Airbnb and all the others are releasing technologies like crazy.
+They are much more cautious when it comes to sharing labeled data&lt;sup id="fnref-9f4e79c9"&gt;&lt;a class="footnote-ref" href="#fn-9f4e79c9"&gt;3&lt;/a&gt;&lt;/sup&gt;.
+Companies are trying to improve their data quality all the time and user feedback is a central ingredient.
+For instance, think of all the thumbs-up/down icons that turned into a little epidemic.
+They are all there as part of the effort of companies to label, tag and flag their data.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Thumbs up" src="http://drorata.github.io/images/thumbs-up.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Lastly, the composition of a data science team was briefly discussed during the Q&amp;amp;A part.
+In contrast to the vibe around the &lt;a href="http://lmgtfy.com/?q=full+stack+data+scientist"&gt;full stack data scientist&lt;/a&gt;, Sébastien advocated the need of a cross functional team in order to address the needs.
+The team should consist of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data scientist and engineer (assuming these are two different things): I guess these two are kind of self-explanatory.&lt;/li&gt;
+&lt;li&gt;Product manager: this guy should fill in the gap between the data scientist in the team and the "business driven" data scientist that should be there. But not only for that; he should take care of all the coordination and the project management.&lt;/li&gt;
+&lt;li&gt;Software developer/engineer: enable easier streamlining of the data science products into the business and to production environments.&lt;/li&gt;
+&lt;li&gt;User interface: remember the thumbs-up/down, this guys is needed to make user feedback more accessible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All in all, the teams size should be between 5-8 people, depending on the plate's size, the capacity of each team member and its availability.
+I believe that during an initial phase of integration of the team(s) in the organization,  some of the manpower may be shared with other parts of the tech team.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-5fa6e1e7"&gt;
+&lt;p&gt;Nice summary on &lt;a href="https://www.quora.com/What-are-the-main-differences-between-artificial-intelligence-and-machine-learning-Is-machine-learning-a-part-of-artificial-intelligence"&gt;Quora&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-5fa6e1e7" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-b5d84a8f"&gt;
+&lt;p&gt;This is a brand of Darwin Recruitment. See &lt;a href="https://www.meetup.com/RecdoTech/members/230799589/"&gt;profile&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-b5d84a8f" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-9f4e79c9"&gt;
+&lt;p&gt;There are &lt;a href="https://quickdraw.withgoogle.com/data"&gt;exceptions&lt;/a&gt; of course.&amp;#160;&lt;a class="footnote-backref" href="#fnref-9f4e79c9" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content></entry><entry><title>Benchmarking Columns Operations</title><link href="http://drorata.github.io/posts/2017/Jun/27/benchmarking-columns-operations/" rel="alternate"></link><published>2017-06-27T21:02:26+02:00</published><updated>2017-06-27T21:02:26+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-06-27:/posts/2017/Jun/27/benchmarking-columns-operations/</id><summary type="html">&lt;p&gt;Benchmarking different ways to process two columns simultaneously.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -259,10 +320,10 @@ Maybe someone would find it helpful.&lt;/p&gt;
 &lt;/div&gt;
  
 
-&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>Remarks on "Data Driven" by Patil &amp; Mason</title><link href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/" rel="alternate"></link><published>2017-03-20T00:00:00+01:00</published><updated>2017-03-20T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-20:/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/</id><summary type="html">&lt;p&gt;Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"&lt;/p&gt;</summary><content type="html">&lt;p&gt;I read recently the paper &lt;em&gt;"Data Driven - creating a data culture"&lt;/em&gt; by DJ Patil and Hilary Mason (&lt;a href="http://www.oreilly.com/data/free/data-driven.csp"&gt;link&lt;/a&gt;).
+&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>Remarks on "Data Driven" by Patil &amp; Mason</title><link href="http://drorata.github.io/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/" rel="alternate"></link><published>2017-03-20T09:08:14+01:00</published><updated>2017-03-20T09:08:14+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-20:/posts/2017/Mar/20/remarks-on-data-driven-by-patil-mason/</id><summary type="html">&lt;p&gt;Some remarks, comments and ideas discussed after reading the paper "Data Driven - creating a data culture"&lt;/p&gt;</summary><content type="html">&lt;p&gt;I read recently the paper &lt;em&gt;"Data Driven - creating a data culture"&lt;/em&gt; by DJ Patil and Hilary Mason (&lt;a href="http://www.oreilly.com/data/free/data-driven.csp"&gt;link&lt;/a&gt;).
 In this post, I'd like to share some thoughts/remarks/etc. that I collected while reading.&lt;/p&gt;
 &lt;h2 id="communication-skills"&gt;Communication skills&lt;/h2&gt;
-&lt;p&gt;Rather early on the authors mention the importance of &lt;a href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/"&gt;communication skills&lt;/a&gt;.
+&lt;p&gt;Rather early on the authors mention the importance of &lt;a href="http://drorata.github.io/posts/2017/Feb/17/thoughts-about-data-science-teams/"&gt;communication skills&lt;/a&gt;.
 For "Asking the right questions" one need to be able to communicate with different stakeholders.
 As a data science team, you need to understand what are the pain points of your colleagues and to that end you would have to speak with them.
 You could have Spock, Lieutenant Data, Pinky and the Brain on board but if they can only talk to each other things won't move forward.&lt;/p&gt;
@@ -310,7 +371,7 @@ Despite of the comments above, still keep in mind that a stupid question is one 
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Share the teams results with interested stakeholders and try to extend the circle&lt;/li&gt;
-&lt;/ul&gt;</content><category term="workflows"></category><category term="research"></category><category term="team"></category></entry><entry><title>Pillars of reproducible data science work</title><link href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/" rel="alternate"></link><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/</id><summary type="html">&lt;p&gt;What does it take to have reproducible data science work? Present a minimal example using Docker.&lt;/p&gt;</summary><content type="html">&lt;h1 id="bare-minimum-of-reproducible-work"&gt;Bare minimum of reproducible work&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="workflows"></category><category term="research"></category><category term="team"></category></entry><entry><title>Pillars of reproducible data science work</title><link href="http://drorata.github.io/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/" rel="alternate"></link><published>2017-03-16T07:52:53+01:00</published><updated>2017-03-16T08:01:21+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-16:/posts/2017/Mar/16/pillars-of-reproducible-data-science-work/</id><summary type="html">&lt;p&gt;What does it take to have reproducible data science work? Present a minimal example using Docker.&lt;/p&gt;</summary><content type="html">&lt;h1 id="bare-minimum-of-reproducible-work"&gt;Bare minimum of reproducible work&lt;/h1&gt;
 &lt;p&gt;The output of software development is naturally a software.
 However, when a software developer presents his or her work the compiled binaries are not the whole story.
 It is important to present also the source code, which has to be readable, meet the coding conventions of the team, testable, etc. etc.
@@ -366,7 +427,7 @@ Still, the size of the resulting image might be a hurdle when it comes to easily
 &lt;p&gt;Paul Niquette (1995). &lt;a href="http://www.niquette.com/books/softword/tocsoft.html"&gt;"Softword: Provenance for the Word 'Software'"&lt;/a&gt;. adapted from Sophisticated: The Magazine ISBN 1-58922-233-4&amp;#160;&lt;a class="footnote-backref" href="#fnref-7d3740b4" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="docker"></category><category term="jupyter"></category><category term="reproducible"></category><category term="research"></category></entry><entry><title>Thoughts about data science teams</title><link href="http://drorata.github.io/posts/2017/Feb/19/thoughts-about-data-science-teams/" rel="alternate"></link><published>2017-02-19T00:00:00+01:00</published><updated>2017-02-19T00:00:00+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-02-19:/posts/2017/Feb/19/thoughts-about-data-science-teams/</id><summary type="html">&lt;p&gt;Some thoughts about the traits needed to establish a successful data science team.&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the positive things about my current situation (read job hunting), is that it provides a good excuse to meet many different people from many different domains.
+&lt;/div&gt;</content><category term="docker"></category><category term="jupyter"></category><category term="reproducible"></category><category term="research"></category></entry><entry><title>Thoughts about data science teams</title><link href="http://drorata.github.io/posts/2017/Feb/17/thoughts-about-data-science-teams/" rel="alternate"></link><published>2017-02-17T15:03:58+01:00</published><updated>2017-02-19T21:59:45+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-02-17:/posts/2017/Feb/17/thoughts-about-data-science-teams/</id><summary type="html">&lt;p&gt;Some thoughts about the traits needed to establish a successful data science team.&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the positive things about my current situation (read job hunting), is that it provides a good excuse to meet many different people from many different domains.
 This is indeed the case for me.
 Furthermore, this state makes you think a lot about your domain, what is your position in it and so on.
 You know, the kind of &lt;em&gt;thoughts-about-life&lt;/em&gt; mode.&lt;/p&gt;
