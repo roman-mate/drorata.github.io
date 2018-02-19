@@ -11775,26 +11775,18 @@ div.collapseheader {
 }
 </style>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'center', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        displayMath: [['$$','$$'], ["\\[","\\]"]]
     }
-}
-init_mathjax();
+});
 </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -11874,6 +11866,27 @@ jQuery(document).ready(function($) {
       <h1>Dror Atariah Articles
 </h1>
       <hr>
+<article class="row teaser">
+  <header class="col-sm-4 text-muted">
+    <ul>
+      <li title="2018-02-19T20:58:35+01:00">
+        <i class="fa fa-clock-o"></i>
+        Mon 19 February 2018
+      </li>
+      <li>
+        <i class="fa fa-folder-open-o"></i>
+        <a href="http://drorata.github.io/category/stats.html">Stats</a>
+      </li>
+    </ul>
+  </header>
+  <div class="col-sm-8">
+    <h4 class="title"><a href="http://drorata.github.io/posts/2018/Feb/19/comparing-z-and-chi2-tests/">Comparing $z$ and $\chi^2$ tests</a></h4>
+    <div class="content">
+      Showing that at least in one certain case the two tests are the same
+    </div>
+  </div>
+</article>
+<hr>
 <article class="row teaser">
   <header class="col-sm-4 text-muted">
     <ul>
@@ -12059,27 +12072,6 @@ jQuery(document).ready(function($) {
     <h4 class="title"><a href="http://drorata.github.io/posts/2017/Apr/04/running-visdom-examples-within-a-docker-container/">Running Visdom examples within a Docker container</a></h4>
     <div class="content">
       Docker could be a great tool when you want to try out new technologies without taking the risk of breaking your own system. I decided to use Docker when having a quick look into Visdom the new toy from Facebook. I'll outline the steps I took. Start a minimal container …
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-04-04T10:11:07+02:00">
-        <i class="fa fa-clock-o"></i>
-        Tue 04 April 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Apr/04/useful-docker-hints/">Useful Docker hints</a></h4>
-    <div class="content">
-      Recently, I started to use and get to know Docker. One of my central motivations is to utilize this technology for the creation of reproducible research/work. The first minimal working example I came up with contains a notebook which loads the data from a CSV file which is part …
     </div>
   </div>
 </article>

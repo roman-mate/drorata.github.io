@@ -11775,26 +11775,18 @@ div.collapseheader {
 }
 </style>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'center', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        displayMath: [['$$','$$'], ["\\[","\\]"]]
     }
-}
-init_mathjax();
+});
 </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -11874,6 +11866,27 @@ jQuery(document).ready(function($) {
       <h1>Dror Atariah Articles
 </h1>
       <hr>
+<article class="row teaser">
+  <header class="col-sm-4 text-muted">
+    <ul>
+      <li title="2017-04-04T10:11:07+02:00">
+        <i class="fa fa-clock-o"></i>
+        Tue 04 April 2017
+      </li>
+      <li>
+        <i class="fa fa-folder-open-o"></i>
+        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
+      </li>
+    </ul>
+  </header>
+  <div class="col-sm-8">
+    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Apr/04/useful-docker-hints/">Useful Docker hints</a></h4>
+    <div class="content">
+      Recently, I started to use and get to know Docker. One of my central motivations is to utilize this technology for the creation of reproducible research/work. The first minimal working example I came up with contains a notebook which loads the data from a CSV file which is part …
+    </div>
+  </div>
+</article>
+<hr>
 <article class="row teaser">
   <header class="col-sm-4 text-muted">
     <ul>
@@ -12059,27 +12072,6 @@ jQuery(document).ready(function($) {
     <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/20/my-getting-started-with-atom/">My getting started with Atom</a></h4>
     <div class="content">
       Introduction I recently discovered Atom. In the past, I've been using Emacs but not so long ago I realized that it is time to move on. Sublime Text 3 was the next editor, but only for a short while. Getting to know Atom and the fact it is free made …
-    </div>
-  </div>
-</article>
-<hr>
-<article class="row teaser">
-  <header class="col-sm-4 text-muted">
-    <ul>
-      <li title="2017-01-18T11:08:50+01:00">
-        <i class="fa fa-clock-o"></i>
-        Wed 18 January 2017
-      </li>
-      <li>
-        <i class="fa fa-folder-open-o"></i>
-        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
-      </li>
-    </ul>
-  </header>
-  <div class="col-sm-8">
-    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/">Experiment with Jupyter</a></h4>
-    <div class="content">
-      Outline how to utilize Jupyter notebooks.
     </div>
   </div>
 </article>

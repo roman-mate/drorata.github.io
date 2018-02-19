@@ -11775,26 +11775,18 @@ div.collapseheader {
 }
 </style>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'center', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        displayMath: [['$$','$$'], ["\\[","\\]"]]
     }
-}
-init_mathjax();
+});
 </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -11891,6 +11883,10 @@ jQuery(document).ready(function($) {
     <td>1</td>
   </tr>
   <tr>
+    <td><a href="http://drorata.github.io/tag/chi2-test.html">#chi2-test</a></td>
+    <td>1</td>
+  </tr>
+  <tr>
     <td><a href="http://drorata.github.io/tag/computer.html">#computer</a></td>
     <td>1</td>
   </tr>
@@ -11912,7 +11908,7 @@ jQuery(document).ready(function($) {
   </tr>
   <tr>
     <td><a href="http://drorata.github.io/tag/hypothesis.html">#hypothesis</a></td>
-    <td>1</td>
+    <td>2</td>
   </tr>
   <tr>
     <td><a href="http://drorata.github.io/tag/it.html">#IT</a></td>
@@ -11999,6 +11995,10 @@ jQuery(document).ready(function($) {
     <td>2</td>
   </tr>
   <tr>
+    <td><a href="http://drorata.github.io/tag/testing.html">#testing</a></td>
+    <td>1</td>
+  </tr>
+  <tr>
     <td><a href="http://drorata.github.io/tag/training.html">#training</a></td>
     <td>1</td>
   </tr>
@@ -12012,6 +12012,10 @@ jQuery(document).ready(function($) {
   </tr>
   <tr>
     <td><a href="http://drorata.github.io/tag/workflows.html">#workflows</a></td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="http://drorata.github.io/tag/z-test.html">#z-test</a></td>
     <td>1</td>
   </tr>
 </table>

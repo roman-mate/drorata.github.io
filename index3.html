@@ -11775,26 +11775,18 @@ div.collapseheader {
 }
 </style>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'center', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        displayMath: [['$$','$$'], ["\\[","\\]"]]
     }
-}
-init_mathjax();
+});
 </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -11874,6 +11866,27 @@ jQuery(document).ready(function($) {
       <h1>Articles
 </h1>
       <hr>
+<article class="row teaser">
+  <header class="col-sm-4 text-muted">
+    <ul>
+      <li title="2017-01-18T11:08:50+01:00">
+        <i class="fa fa-clock-o"></i>
+        Wed 18 January 2017
+      </li>
+      <li>
+        <i class="fa fa-folder-open-o"></i>
+        <a href="http://drorata.github.io/category/howto.html">HowTo</a>
+      </li>
+    </ul>
+  </header>
+  <div class="col-sm-8">
+    <h4 class="title"><a href="http://drorata.github.io/posts/2017/Jan/18/experiment-with-jupyter/">Experiment with Jupyter</a></h4>
+    <div class="content">
+      Outline how to utilize Jupyter notebooks.
+    </div>
+  </div>
+</article>
+<hr>
 <article class="row teaser">
   <header class="col-sm-4 text-muted">
     <ul>
