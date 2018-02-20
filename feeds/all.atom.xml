@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2018-02-19T20:58:35+01:00</updated><entry><title>Comparing $z$ and $\chi^2$ tests</title><link href="http://drorata.github.io/posts/2018/Feb/19/comparing-z-and-chi2-tests/" rel="alternate"></link><published>2018-02-19T20:58:35+01:00</published><updated>2018-02-19T20:58:35+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2018-02-19:/posts/2018/Feb/19/comparing-z-and-chi2-tests/</id><summary type="html">&lt;p&gt;Showing that at least in one certain case the two tests are the same&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is a snapshot of a notebook that can be found here: &lt;a href="https://github.com/drorata/z-vs-ch2-tests/blob/fd870a67cbe3b9e44d397e50a8883919d676e8bf/compare%20z%20and%20chi%20square%20tests.ipynb"&gt;(fd870a6)&lt;/a&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/all.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2018-02-20T21:24:29+01:00</updated><entry><title>Comparing $z$ and $\chi^2$ tests</title><link href="http://drorata.github.io/posts/2018/Feb/19/comparing-z-and-chi2-tests/" rel="alternate"></link><published>2018-02-19T20:58:35+01:00</published><updated>2018-02-19T20:58:35+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2018-02-19:/posts/2018/Feb/19/comparing-z-and-chi2-tests/</id><summary type="html">&lt;p&gt;Showing that at least in one certain case the two tests are the same&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is a snapshot of a notebook that can be found here: &lt;a href="https://github.com/drorata/z-vs-ch2-tests/blob/fd870a67cbe3b9e44d397e50a8883919d676e8bf/compare%20z%20and%20chi%20square%20tests.ipynb"&gt;(fd870a6)&lt;/a&gt;.
 You can also enjoy the binder version of this notebook &lt;a href="https://mybinder.org/v2/gh/drorata/z-vs-ch2-tests/master"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 
@@ -743,10 +743,10 @@ The synthetic&lt;/p&gt;
 
  
  
-&lt;div id="aa598e8e-7bd4-4938-bdcb-9daaa28e5300"&gt;&lt;/div&gt;
+&lt;div id="78897de5-61b2-4ac7-89ff-140b798afe02"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#aa598e8e-7bd4-4938-bdcb-9daaa28e5300');
+var element = $('#78897de5-61b2-4ac7-89ff-140b798afe02');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "fb25d76fed4949658247726a8220da02", "version_major": 2, "version_minor": 0}
@@ -4441,7 +4441,7 @@ Simply run:&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://forums.docker.com/t/where-are-images-stored-on-mac-os-x/17165/2"&gt;source&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref-167a330e" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="docker"></category><category term="reproducible"></category><category term="research"></category><category term="jupyter"></category></entry><entry><title>Mushrooms and decision trees</title><link href="http://drorata.github.io/posts/2017/Mar/31/mushrooms-and-decision-trees/" rel="alternate"></link><published>2017-03-31T11:16:12+02:00</published><updated>2017-03-31T14:36:55+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-31:/posts/2017/Mar/31/mushrooms-and-decision-trees/</id><summary type="html">&lt;p&gt;Playing around with decision trees on a dataset of mushrooms&lt;/p&gt;</summary><content type="html">&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
+&lt;/div&gt;</content><category term="docker"></category><category term="reproducible"></category><category term="research"></category><category term="jupyter"></category></entry><entry><title>Mushrooms and decision trees</title><link href="http://drorata.github.io/posts/2017/Mar/31/mushrooms-and-decision-trees/" rel="alternate"></link><published>2017-03-31T11:16:12+02:00</published><updated>2018-02-20T21:24:29+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-31:/posts/2017/Mar/31/mushrooms-and-decision-trees/</id><summary type="html">&lt;p&gt;Playing around with decision trees on a dataset of mushrooms&lt;/p&gt;</summary><content type="html">&lt;h2 id="preface"&gt;Preface&lt;/h2&gt;
 &lt;p&gt;I have posted a notebook on GitHub where I explore a dataset of mushrooms.
 This dataset together with simple decision trees lets you decide whether a mushroom is poisonous or not.
 Still, using this model in real life is on your own risk!&lt;/p&gt;
