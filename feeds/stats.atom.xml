@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - Stats</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/stats.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2018-02-19T20:58:35+01:00</updated><entry><title>Comparing $z$ and $\chi^2$ tests</title><link href="http://drorata.github.io/posts/2018/Feb/19/comparing-z-and-chi2-tests/" rel="alternate"></link><published>2018-02-19T20:58:35+01:00</published><updated>2018-02-19T20:58:35+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2018-02-19:/posts/2018/Feb/19/comparing-z-and-chi2-tests/</id><summary type="html">&lt;p&gt;Showing that at least in one certain case the two tests are the same&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is a snapshot of a notebook that can be found here: &lt;a href="https://github.com/drorata/z-vs-ch2-tests/blob/fd870a67cbe3b9e44d397e50a8883919d676e8bf/compare%20z%20and%20chi%20square%20tests.ipynb"&gt;(fd870a6)&lt;/a&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - Stats</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/stats.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2018-02-19T21:58:35+01:00</updated><entry><title>Comparing $z$ and $\chi^2$ tests</title><link href="http://drorata.github.io/posts/2018/Feb/19/comparing-z-and-chi2-tests/" rel="alternate"></link><published>2018-02-19T21:58:35+01:00</published><updated>2018-02-19T21:58:35+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2018-02-19:/posts/2018/Feb/19/comparing-z-and-chi2-tests/</id><summary type="html">&lt;p&gt;Showing that at least in one certain case the two tests are the same&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post is a snapshot of a notebook that can be found here: &lt;a href="https://github.com/drorata/z-vs-ch2-tests/blob/fd870a67cbe3b9e44d397e50a8883919d676e8bf/compare%20z%20and%20chi%20square%20tests.ipynb"&gt;(fd870a6)&lt;/a&gt;.
 You can also enjoy the binder version of this notebook &lt;a href="https://mybinder.org/v2/gh/drorata/z-vs-ch2-tests/master"&gt;&lt;img alt="Binder" src="https://mybinder.org/badge.svg"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 
@@ -743,10 +743,10 @@ The synthetic&lt;/p&gt;
 
  
  
-&lt;div id="78897de5-61b2-4ac7-89ff-140b798afe02"&gt;&lt;/div&gt;
+&lt;div id="ddead669-f66a-466a-8df7-d3009e27e5fd"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_widget_view "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#78897de5-61b2-4ac7-89ff-140b798afe02');
+var element = $('#ddead669-f66a-466a-8df7-d3009e27e5fd');
 &lt;/script&gt;
 &lt;script type="application/vnd.jupyter.widget-view+json"&gt;
 {"model_id": "fb25d76fed4949658247726a8220da02", "version_major": 2, "version_minor": 0}
@@ -1147,7 +1147,7 @@ Let us check how close are they.&lt;/p&gt;
 &lt;/div&gt;
  
 
-&lt;/p&gt;</content><category term="hypothesis"></category><category term="testing"></category><category term="z-test"></category><category term="chi2-test"></category></entry><entry><title>Why do we need to divide by n-1?</title><link href="http://drorata.github.io/posts/2017/Sep/10/why-do-we-need-to-divide-by-n-1/" rel="alternate"></link><published>2017-09-10T18:13:07+02:00</published><updated>2017-09-10T18:13:07+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-09-10:/posts/2017/Sep/10/why-do-we-need-to-divide-by-n-1/</id><summary type="html">&lt;p&gt;Trying to give an intuitive understanding what's the difference between a biased and unbiased estimators of variance of a sample.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+&lt;/p&gt;</content><category term="hypothesis"></category><category term="testing"></category><category term="z-test"></category><category term="chi2-test"></category></entry><entry><title>Why do we need to divide by n-1?</title><link href="http://drorata.github.io/posts/2017/Sep/10/why-do-we-need-to-divide-by-n-1/" rel="alternate"></link><published>2017-09-10T19:13:07+02:00</published><updated>2017-09-10T19:13:07+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-09-10:/posts/2017/Sep/10/why-do-we-need-to-divide-by-n-1/</id><summary type="html">&lt;p&gt;Trying to give an intuitive understanding what's the difference between a biased and unbiased estimators of variance of a sample.&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -2576,7 +2576,7 @@ hv8PVkHqc8yY+J8AAAAASUVORK5CYII=
 &lt;/div&gt;
  
 
-&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category><category term="numpy"></category><category term="std"></category></entry><entry><title>Playing around with $t$-test</title><link href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/" rel="alternate"></link><published>2017-01-27T14:20:55+01:00</published><updated>2017-01-30T15:11:22+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-27:/posts/2017/Jan/27/playing-around-with-t-test/</id><summary type="html">&lt;p&gt;Heights measuring and means evaluations&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category><category term="numpy"></category><category term="std"></category></entry><entry><title>Playing around with $t$-test</title><link href="http://drorata.github.io/posts/2017/Jan/27/playing-around-with-t-test/" rel="alternate"></link><published>2017-01-27T15:20:55+01:00</published><updated>2017-01-30T16:11:22+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-27:/posts/2017/Jan/27/playing-around-with-t-test/</id><summary type="html">&lt;p&gt;Heights measuring and means evaluations&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;

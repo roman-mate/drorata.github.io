@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - General</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/general.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2017-09-03T20:35:56+02:00</updated><entry><title>When trying to hash a data frame</title><link href="http://drorata.github.io/posts/2017/May/26/when-trying-to-hash-a-data-frame/" rel="alternate"></link><published>2017-05-26T21:10:17+02:00</published><updated>2017-05-26T21:17:02+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-26:/posts/2017/May/26/when-trying-to-hash-a-data-frame/</id><summary type="html">&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dr. Dror - General</title><link href="http://drorata.github.io/" rel="alternate"></link><link href="http://drorata.github.io/feeds/general.atom.xml" rel="self"></link><id>http://drorata.github.io/</id><updated>2018-03-27T07:53:14+02:00</updated><entry><title>Hedge Yourself From a Risky Data Science Job</title><link href="http://drorata.github.io/posts/2018/Mar/26/hedge-yourself-from-a-risky-data-science-job/" rel="alternate"></link><published>2018-03-26T20:57:17+02:00</published><updated>2018-03-27T07:53:14+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2018-03-26:/posts/2018/Mar/26/hedge-yourself-from-a-risky-data-science-job/</id><summary type="html">&lt;p&gt;I recently came across a wonderful post by Talia Borodin titled &lt;a href="https://www.entrepreneur.com/article/310505"&gt;"Think Your Company Needs a Data Scientist? You're Probably Wrong"&lt;/a&gt;.
+If you didn't ready it yet, make sure you do it!
+It contains a wonderful collection of truths that every individual who has anything to do with data science …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently came across a wonderful post by Talia Borodin titled &lt;a href="https://www.entrepreneur.com/article/310505"&gt;"Think Your Company Needs a Data Scientist? You're Probably Wrong"&lt;/a&gt;.
+If you didn't ready it yet, make sure you do it!
+It contains a wonderful collection of truths that every individual who has anything to do with data science must know by heart.
+Talia's post is aiming at the entrepreneurs and other managing functions in companies.
+However, the discussed messages and questions can, and should, be pivoted, thus becoming a valuable tool in the hands of data science professionals themselves.
+A data scientist who is hired by a company which doesn't manage to answer all four questions properly, is entering a world of pain.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="world_of_pain" src="http://drorata.github.io/images/world_of_pain.jpg"&gt;
+&lt;a href="http://www.quickmeme.com/meme/3rrcmo/page/1/"&gt;[Source]&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="how-much-data-is-available"&gt;How much data is available?&lt;/h2&gt;
+&lt;p&gt;A racing car driver would not join a team that does not have credit for gasoline.
+As &lt;a href="https://www.economist.com/news/leaders/21721656-data-economy-demands-new-approach-antitrust-rules-worlds-most-valuable-resource"&gt;data is the new oil&lt;/a&gt;, the data scientist should make sure that the potential organization has data.
+The quality and value of potential results of data science work are limited by the availability (and quality) of the data.
+Don't get confused; you will always want more/better data, and that's OK, but something to start with has to be around.
+Once expectations exist but data not then the track to fail is paved.&lt;/p&gt;
+&lt;h2 id="are-there-established-key-performance-indicators-kpis-and-regular-business-intelligence-reporting"&gt;Are there established key performance indicators (KPIs) and regular business intelligence reporting?&lt;/h2&gt;
+&lt;p&gt;Without having good KPIs in place the impact of the data scientists' work will not be measurable.
+Most likely, there are some KPIs defined and measured, but it is important to make sure that they are granular enough and can be used to effectively measure the impact of changes introduced by the data scientist.
+Note that while &lt;em&gt;high level&lt;/em&gt; KPIs are crucial for the business, they are not the best fit when it comes to evaluation of data products.
+It is very unlikely that the first improvement resulting from a data science effort will increase the bottom line revenue.
+The first iteration is more likely to effect (and hopefully improve) a more "raw" KPI; something like click through rate or average basket size.
+Thus it is important to have an established system that can monitor KPIs on various resolutions.&lt;/p&gt;
+&lt;h2 id="what-do-they-imagine-you-will-do-once-hired"&gt;What do they imagine you will do once hired?&lt;/h2&gt;
+&lt;p&gt;This question is all about expectations management.
+If the company does not have expectations from its future data scientist, albeit this might sound nice, then the future hire is likely to work on the wrong problems.
+On the other hand, expectations of the type "boost efficiency" and "improve customers' satisfaction", are very hard to quantify and, let alone, achieve.
+Without an initial idea what problems the data scientist is expected to tackle, it is very likely that mutual frustration will join the party rather quickly.
+Moreover, clear expectations are likely to be backed up by KPIs, and thus also turning evaluation of the quality more accessible.&lt;/p&gt;
+&lt;h2 id="what-support-networks-are-provided"&gt;What support networks are provided?&lt;/h2&gt;
+&lt;p&gt;Productization of data science projects is hardly every a one-man-show.
+At least Devops, developers and data engineers are needed to collaborate during the productization process.
+Without their support and involvement the data scientist will be blocked and the amazing solutions will be kept locked without having the mere chance of moving the needle.
+Be careful, this is not the only aspect of &lt;em&gt;network&lt;/em&gt; that you will want to have in your next position.
+You would also need someone who will be ready to collaborate with you during the development process.
+Your fellow developers normally have a well structured reviewing process of their work.
+This process is there for a good reason; as you probably know, it is very hard to detect flaws, issues, and bugs in your own code.
+Duck debugging is great, but not as great as a peer (not necessarily a data scientist on his own).
+For example, a business stakeholder who is keen on solving the problem you were asked to solve and ready to dive a little deeper into the code is a great start.
+Other aspects of the needed network may have to do with established technology and workflows enabling a smooth transition from a local POC to a full fledged data science product.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The world is not black and white and shades of gray are ruling.
+Companies hire data scientists at different stages of evolution, and in turn their needs, expectations, readiness etc. may vary.
+However, it is crucial to align on the expectations.
+It can well be that some of the answers to the questions raised above are partial and it is not the end of the world, but you and the company should be aligned on what it means.
+Hiring data scientists is not a magical solution and must not be treated as one.
+A data scientist can and should add value to the company's business, but it is very unlikely to be a successful journey if treated as a uni-sided process.
+The success of the data scientist heavily depends on the commitment of the company and without it mutual frustration is awaiting just around the corner.&lt;/p&gt;</content></entry><entry><title>When trying to hash a data frame</title><link href="http://drorata.github.io/posts/2017/May/26/when-trying-to-hash-a-data-frame/" rel="alternate"></link><published>2017-05-26T22:10:17+02:00</published><updated>2017-05-26T22:17:02+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-26:/posts/2017/May/26/when-trying-to-hash-a-data-frame/</id><summary type="html">&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
 &lt;p&gt;The function &lt;a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.values.html"&gt;&lt;code&gt;pandas.DataFrame.values&lt;/code&gt;&lt;/a&gt; is not the inverse of &lt;code&gt;pd.DataFrame(np.array)&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;An important part of reproducible data science work, is the ability to apply the &lt;a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph"&gt;DAG&lt;/a&gt; on the very same dataset.
@@ -85,7 +132,7 @@ You can find a summarizing &lt;a href="https://gist.github.com/drorata/bfc5d956c
 In addition, I have also opened a &lt;a href="https://github.com/pandas-dev/pandas/issues/16517"&gt;ticket on the matter&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="solution"&gt;Solution&lt;/h2&gt;
 &lt;p&gt;Well, it turns out, that opening the bug was helpful.
-As of 0.20.1, it is possible to &lt;a href="https://github.com/pandas-dev/pandas/issues/16517#issuecomment-304364225"&gt;hash data frames&lt;/a&gt;!&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>SQL Server and macOS --- my first take</title><link href="http://drorata.github.io/posts/2017/May/08/sql-server-and-macos-my-first-take/" rel="alternate"></link><published>2017-05-08T06:34:17+02:00</published><updated>2017-05-08T06:34:17+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-08:/posts/2017/May/08/sql-server-and-macos-my-first-take/</id><summary type="html">&lt;p&gt;The 90s are back and it turns out that cross platform approach doesn't apply for MS SQL Server.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started working at &lt;a href="http://www.rebuy.com"&gt;reBuy&lt;/a&gt; and discovered that the data warehouse has recently migrated to &lt;a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server"&gt;MS SQL Server&lt;/a&gt;.
+As of 0.20.1, it is possible to &lt;a href="https://github.com/pandas-dev/pandas/issues/16517#issuecomment-304364225"&gt;hash data frames&lt;/a&gt;!&lt;/p&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>SQL Server and macOS --- my first take</title><link href="http://drorata.github.io/posts/2017/May/08/sql-server-and-macos-my-first-take/" rel="alternate"></link><published>2017-05-08T07:34:17+02:00</published><updated>2017-05-08T07:34:17+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-05-08:/posts/2017/May/08/sql-server-and-macos-my-first-take/</id><summary type="html">&lt;p&gt;The 90s are back and it turns out that cross platform approach doesn't apply for MS SQL Server.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently, I started working at &lt;a href="http://www.rebuy.com"&gt;reBuy&lt;/a&gt; and discovered that the data warehouse has recently migrated to &lt;a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server"&gt;MS SQL Server&lt;/a&gt;.
 Naively, I thought that it would not be much of an impediment; I was wrong.
 Over the past 7 years I am mostly using Mac, and beforehand I used to have Linux boxes for couple of years.
 The last time I really worked on a Windows machine was 10+ years ago.
@@ -200,7 +247,7 @@ I didn't find a way around it yet albeit I'm sure there must be one; after all S
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="SQL"></category><category term="atom"></category><category term="python"></category><category term="mac"></category></entry><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2017/Mar/10/setting-new-computer/" rel="alternate"></link><published>2017-03-10T11:24:46+01:00</published><updated>2017-04-04T07:26:29+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-10:/posts/2017/Mar/10/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
+&lt;/script&gt;</content><category term="SQL"></category><category term="atom"></category><category term="python"></category><category term="mac"></category></entry><entry><title>Setting new computer</title><link href="http://drorata.github.io/posts/2017/Mar/10/setting-new-computer/" rel="alternate"></link><published>2017-03-10T12:24:46+01:00</published><updated>2017-04-04T08:26:29+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-03-10:/posts/2017/Mar/10/setting-new-computer/</id><summary type="html">&lt;p&gt;Mostly notes for myself on what items I installed on a new machine. You might be interested as well.&lt;/p&gt;</summary><content type="html">&lt;h1 id="straightforward"&gt;Straightforward&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Docker&lt;/code&gt; Time to start using it, right?&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;DropboxInstaller&lt;/code&gt;&lt;/li&gt;
@@ -254,7 +301,7 @@ I Simply added &lt;code&gt;syntax on&lt;/code&gt; to &lt;code&gt;~/.vimrc&lt;/co
 &lt;p&gt;When inspecting a file from the console, it is nice to see it colored properly.
 A nice way to go about it is to install &lt;code&gt;Pygments&lt;/code&gt;.
 This can be easily done: &lt;code&gt;conda install Pygments&lt;/code&gt;.
-Next, in &lt;code&gt;~/.bash_profile&lt;/code&gt; I added the following alias &lt;code&gt;alias catc='pygmentize -g'&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Parasitic numbers - did you know?</title><link href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/" rel="alternate"></link><published>2017-01-30T15:32:31+01:00</published><updated>2017-01-30T15:37:34+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-30:/posts/2017/Jan/30/parasitic-numbers-did-you-know/</id><summary type="html">&lt;p&gt;Just learned about a new kind of numbers&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+Next, in &lt;code&gt;~/.bash_profile&lt;/code&gt; I added the following alias &lt;code&gt;alias catc='pygmentize -g'&lt;/code&gt;.&lt;/p&gt;</content><category term="IT"></category><category term="computer"></category><category term="apps"></category><category term="settings"></category><category term="superuser"></category><category term="python"></category></entry><entry><title>Parasitic numbers - did you know?</title><link href="http://drorata.github.io/posts/2017/Jan/30/parasitic-numbers-did-you-know/" rel="alternate"></link><published>2017-01-30T16:32:31+01:00</published><updated>2017-01-30T16:37:34+01:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-30:/posts/2017/Jan/30/parasitic-numbers-did-you-know/</id><summary type="html">&lt;p&gt;Just learned about a new kind of numbers&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -342,7 +389,7 @@ So, I wrote down the following simple code, and found out:&lt;/p&gt;
 &lt;/div&gt;
  
 
-&lt;/p&gt;</content><category term="math"></category></entry><entry><title>First post</title><link href="http://drorata.github.io/posts/2017/Jan/12/first-post/" rel="alternate"></link><published>2017-01-12T07:07:13+01:00</published><updated>2017-09-03T20:35:56+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-12:/posts/2017/Jan/12/first-post/</id><summary type="html">&lt;h1 id="trying-to-move-to-pelican"&gt;Trying to move to &lt;a href="https://blog.getpelican.com/"&gt;pelican&lt;/a&gt;&lt;/h1&gt;
+&lt;/p&gt;</content><category term="math"></category></entry><entry><title>First post</title><link href="http://drorata.github.io/posts/2017/Jan/12/first-post/" rel="alternate"></link><published>2017-01-12T08:07:13+01:00</published><updated>2017-09-03T21:35:56+02:00</updated><author><name>Dror Atariah</name></author><id>tag:drorata.github.io,2017-01-12:/posts/2017/Jan/12/first-post/</id><summary type="html">&lt;h1 id="trying-to-move-to-pelican"&gt;Trying to move to &lt;a href="https://blog.getpelican.com/"&gt;pelican&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Following is a review of my favorite mechanical keyboard.&lt;/p&gt;
 &lt;p&gt;EDIT:&lt;/p&gt;
 &lt;p&gt;Here's an inline math example: &lt;span class="math"&gt;\(x^2\)&lt;/span&gt; which works nicely.
